@@ -16,8 +16,8 @@ setClass("p2pcf",slots=c(functionList="ANY"))
 #' @rdname p2pcf
 #' @method initialise p2pcf
 #' @export
-setMethod("initialize","p2pcf",function(.Object,...,functionList=as.character()){
-	.Object@functionList=c(functionList,...)
+setMethod("initialize","p2pcf",function(.Object,functionList=as.character()){
+	.Object@functionList=c(functionList)
 	.Object
 })
 
