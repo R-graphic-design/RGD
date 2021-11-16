@@ -17,7 +17,7 @@
 #' @seealso \url{http://paulbourke.net/fractals/peterdejong/}
 #' @examples
 #' art=makeDeJongAttractor(cex=0.1,col=rgb(0,0,0,0.1))
-#' easyPlot(art,preserveAspectRatio=TRUE)
+#' ##easyPlot(art,preserveAspectRatio=TRUE)
 #' @name DeJongAttractor
 NULL
 #> NULL
