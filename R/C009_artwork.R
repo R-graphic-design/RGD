@@ -40,6 +40,7 @@
 #'
 #' * mode=3 As mode 2, and ffmpeg is used to create a video afterwards.
 #' @details2 If you do artwork +or- a list, it will +or- each element in the list sequentially. 
+#' @import grid
 #' @export
 #' @examples
 #' print(1+1)
