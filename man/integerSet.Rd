@@ -72,6 +72,6 @@ If none of these conditions are met, integerCheck will return FALSE. The only ex
 #An integer set
 autoPass=new("integerSet")
 integerCheck(4,autoPass)  
-autoFail=new("integerSet",moments=-Inf)
+autoFail=new("integerSet",integers=-Inf)
 integerCheck(4,autoFail)
 }

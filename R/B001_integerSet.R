@@ -37,7 +37,7 @@
 #' #An integer set
 #' autoPass=new("integerSet")
 #' integerCheck(4,autoPass)  
-#' autoFail=new("integerSet",moments=-Inf)
+#' autoFail=new("integerSet",integers=-Inf)
 #' integerCheck(4,autoFail)
 #' @name integerSet
 integerSet <- setClass("integerSet",
