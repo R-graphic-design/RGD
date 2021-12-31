@@ -6,7 +6,6 @@
 #' @param parameterSpace the set of parameters used.
 #' @param tmin,tmax,lent used when parameterSpace isn't given. seq(tmin,tmax,lent) is then used as a parameterSpace.
 #' @param ... parameters passed to the component and the component functions runParametric and runTSpace. See "details" for more information.
-#' @template runMakeXYComponent
 #' @examples
 #' @family makeParametric
 #' easyPlot(makeParametric())

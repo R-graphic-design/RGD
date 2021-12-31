@@ -1,0 +1,1 @@
+#' @param sampleSize If a number, x and y are trimmed to this length before being returned using pruneStart. Defaults to NULL which means x and y aren't trimmed.

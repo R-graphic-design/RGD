@@ -15,9 +15,6 @@ makeHarmonograph(
 \arguments{
 \item{...}{parameters passed to makeParametric.}
 }
-\value{
-The run function returns a list containing x and y values. The make function returns a component object.
-}
 \description{
 Functions to calculate a harmonograph
 runHarmonograph calculates the points. makeHarmonograph makes a component that calculates and plots the output.

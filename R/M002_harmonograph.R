@@ -7,7 +7,6 @@
 #' @param amplitudes
 #' @param decay
 #' @param ... parameters passed to makeParametric.
-#' @template runMakeXYComponent
 #' @examples
 #' @export
 #' @family makeParametric

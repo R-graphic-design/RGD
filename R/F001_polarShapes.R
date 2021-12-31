@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Functions to draw shapes from polar co-ordinates.
-#' @template makeTypePolygon
+#' @template param_type_polygon
 #' @param x,y the center of the shape
 #' @param r radius
 #' @param points the number of points on single loop

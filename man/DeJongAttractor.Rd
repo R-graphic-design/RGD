@@ -28,19 +28,6 @@ runDeJongAttractor(
 \item{...}{parameters passed to the component and the component function runDeJongAttractor. See "details" for more information.}
 
 \item{a, b, c, d}{The four parameters of the attractor from the above equations.}
-
-\item{inputx, inputy}{x and y co-ordinates to be used as initial conditions. Both default to 0. This is the default way to give initial conditions. See x,y and reuseInput.}
-
-\item{x, y}{x and y co-ordinates. Can be vectors of the same length. If they are, the final value will represent the current position. Defaults to NULL, which forces the use of inputx and input y. If both are given, reuseInput determines the initial conditions. Using x and y as initial conditions is useful for creating animations where you add more points to the attractor with each frame.}
-
-\item{runTime}{The number of iterations to calculate. Each iteration is added to the end of x and y. Defaults to 100000. sampleSize can be used to trim this down.}
-
-\item{sampleSize}{If a number, x and y are trimmed to this length before being returned using pruneStart. Defaults to NULL which means x and y aren't trimmed.}
-
-\item{reuseInput}{Forces the use of inputx and inputy as initial values. Defaults to FALSE. Setting this to TRUE is useful for creating animations where the parameters a,b,c and d are varied.}
-}
-\value{
-The run function returns a list containing x and y values. The make function returns a component object.
 }
 \description{
 Functions to calculate the sequence of points given by the following dynamical system in order to draw the attractor of the system.
@@ -50,12 +37,10 @@ Functions to calculate the sequence of points given by the following dynamical s
 }
 
 runDeJongAttractor calculates the attractor. makeDeJongAttractor makes a component that calculates and plots the Attractor.
-}
-\details{
-style, units, p, functions, active, visible, and frames are passed to the component slots of the same name.
 
 ref is a vector of data references that are added to the p slot in the component
-
+}
+\details{
 .frames, .plotting and .repeats control the run function
 
 All other parameters are added to the p slot in the component. This can include graphical parameters for the plotting function(s) or the run function.

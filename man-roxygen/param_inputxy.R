@@ -1,0 +1,1 @@
+#' @param inputx,inputy	x and y co-ordinates to be used as initial conditions. Both default to 0. This is the default way to give initial conditions. See x,y and reuseInput.

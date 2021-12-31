@@ -6,13 +6,9 @@
 #' * \ifelse{html}{\out{y[n+1]=c*cos(a*x[n])+cos(b*y[n])}}{\eqn{LATEX-LIKE CODE}{ASCII}}
 #'
 #' runSvenssonAttractor calculates the attractor. makeSvenssonAttractor makes a component that calculates and plots the Attractor.
-#' @template makeTypePoints
+#' @template param_type_points
 #' @param ... parameters passed to the component and the component function runSvenssonAttractor. See "details" for more information.
-#' @template attractors1
 #' @param a,b,c,d The four parameters of the attractor from the above equations.
-#' @template attractors2
-#' @template runMake1B
-#' @template runMakeXYComponent
 #' @family 2dAttractors
 #' @seealso \url{http://paulbourke.net/fractals/peterdejong/}
 #' @examples

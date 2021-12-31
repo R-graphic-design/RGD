@@ -1,0 +1,1 @@
+#' @param x,y x and y co-ordinates. Can be vectors of the same length. If they are, the final value will represent the current position. Defaults to NULL, which forces the use of inputx and input y. If both are given, reuseInput determines the initial conditions. Using x and y as initial conditions is useful for creating animations where you add more points with each frame.

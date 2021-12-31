@@ -1,4 +1,4 @@
-#' @details style, units, p, functions, active, visible, and frames are passed to the component slots of the same name.
+#' style, units, p, functions, active, visible, and frames are passed to the component slots of the same name.
 #'	
 #' ref is a vector of data references that are added to the p slot in the component
 #'

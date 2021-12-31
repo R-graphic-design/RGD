@@ -6,13 +6,10 @@
 #' * \ifelse{html}{\out{y[n+1]=sin(c*x[n])-cos(d*y[n])}}{\eqn{LATEX-LIKE CODE}{ASCII}}
 #'
 #' runDeJongAttractor calculates the attractor. makeDeJongAttractor makes a component that calculates and plots the Attractor.
-#' @template makeTypePoints
+#' @template param_type_points
 #' @param ... parameters passed to the component and the component function runDeJongAttractor. See "details" for more information.
-#' @template attractors1
 #' @param a,b,c,d The four parameters of the attractor from the above equations.
-#' @template attractors2
-#' @template runMake1B
-#' @template runMakeXYComponent
+#' @template details_runMake_component
 #' @family 2dAttractors
 #' @seealso \url{http://paulbourke.net/fractals/peterdejong/}
 #' @examples

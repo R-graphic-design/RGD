@@ -1,3 +1,0 @@
-#' @param inputx,inputy	x and y co-ordinates to be used as initial conditions. Both default to 0. This is the default way to give initial conditions. See x,y and reuseInput.
-#' @param x,y x and y co-ordinates. Can be vectors of the same length. If they are, the final value will represent the current position. Defaults to NULL, which forces the use of inputx and input y. If both are given, reuseInput determines the initial conditions. Using x and y as initial conditions is useful for creating animations where you add more points to the attractor with each frame.
-#' @param runTime The number of iterations to calculate. Each iteration is added to the end of x and y. Defaults to 100000. sampleSize can be used to trim this down.
