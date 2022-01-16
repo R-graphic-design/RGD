@@ -39,7 +39,7 @@ runCCA=function(input,image=NULL,numSteps=10,maxNum=7,nbhdType="VN",range=1,thre
 #' @rdname cyclicCellularAutomata
 #' @export
 randomInitialCCA=function(maxNum=7,xSize=100,ySize=100){
-	return(list(input=randomMatrix(maxNum,xSize,ySize)))
+	return(list(input=randomMatrix(maximum=maxNum,numRow=xSize,numCol=ySize)))
 }
 #' @rdname cyclicCellularAutomata
 #' @export
