@@ -6,7 +6,6 @@
 \title{makeImage}
 \usage{
 makeImage(
-  image,
   type = "rasterImage",
   xleft = 0,
   xright = 1,
@@ -18,8 +17,6 @@ makeImage(
 makeImageFromMatrix(...)
 }
 \arguments{
-\item{image}{a matrix or RGB array}
-
 \item{type}{plotting function(s) used}
 
 \item{xleft, xright, ytop, ybottom}{positioning. see rasterImage}
@@ -31,5 +28,5 @@ a component
 }
 \description{
 Functions to make a component for the rasterImage function in the base graphics system.
-makeImage assumes the input is an RGB array, whilst makeImageFromMatrix converts a matrix into colours for you using matrixToColours.
+makeImage assumes the input "image"is an RGB array, whilst makeImageFromMatrix converts a matrix into colours for you using matrixToColours.
 }

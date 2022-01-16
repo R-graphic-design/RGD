@@ -14,7 +14,7 @@ NULL
 #' @rdname makeImage
 #' @export
 makeImage=function(type="rasterImage",xleft=0,xright=1,ytop=1,ybottom=0,...){
-	return(component(xleft=xleft,xright=xright,ytop=ytop,ybottom=ybottom,...))
+	return(component(type=type,xleft=xleft,xright=xright,ytop=ytop,ybottom=ybottom,...))
 }
 #' @rdname makeImage
 #' @export
