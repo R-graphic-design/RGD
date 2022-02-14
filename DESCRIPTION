@@ -1,5 +1,5 @@
-Package: v0.1
-Title: What the Package Does (One Line, Title Case)
+Package: RGD
+Title: A package for Graphic Design in R
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "First",
