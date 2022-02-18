@@ -48,6 +48,7 @@ plotArtwork=function(art){
 					
 					if(is.null(newDeviceSettings$res)){newDeviceSettings$res=150}
 					if(is.null(newDeviceSettings$antialias)){newDeviceSettings$antialias="cleartype"}
+					if(is.null(newDeviceSettings$units)){newDeviceSettings$units="px"}
 					#if(is.null(newDeviceSettings$fileWidth)){newDeviceSettings$antialias="cleartype"}
 					
 					###ADD FILE SIZE SHENANIGANS HERE
@@ -72,15 +73,15 @@ plotArtwork=function(art){
 					}
 					if(art@format=="jpg"){
 						jpeg(file=paste(currentFileName,".jpg",sep=""),width=art@width,height=art@height,
-							res=newDeviceSettings$res,antialias=newDeviceSettings$antialias)
+							res=newDeviceSettings$res,antialias=newDeviceSettings$antialias,units=newDeviceSettings$units)
 					}
 					if(art@format=="bitmap"){
 						bmp(file=paste(currentFileName,".bmp",sep=""),width=art@width,height=art@height,
-							res=newDeviceSettings$res,antialias=newDeviceSettings$antialias)
+							res=newDeviceSettings$res,antialias=newDeviceSettings$antialias,units=newDeviceSettings$units)
 					}
 					if(art@format=="png"){
 						png(file=paste(currentFileName,".png",sep=""),width=art@width,height=art@height,
-							res=newDeviceSettings$res,antialias=newDeviceSettings$antialias)
+							res=newDeviceSettings$res,antialias=newDeviceSettings$antialias,units=newDeviceSettings$units)
 					}
 					if(art@format=="screen"){
 						dev.new(width=art@width,height=art@height)
