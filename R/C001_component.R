@@ -53,7 +53,7 @@ setMethod("initialize","component",function(.Object,...,
 	#how to ref?
 	######data
 	fullList=c(data,list(...))
-	fullList=fullList[!names(fullList)%in%c(".frames",".abcd",".repeats",."useData","type")]
+	fullList=fullList[!names(fullList)%in%c(".frames",".abcd",".repeats",".useData",".type")]
 	.Object@data<-fullList
 	if(length(ref)>0){
 		.Object@data<-c(.Object@data,lapply(ref,directRef))#change to mergeOverVariant??
