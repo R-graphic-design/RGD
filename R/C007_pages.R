@@ -6,12 +6,12 @@
 #' @slot name A name for the file if the artwork is plotted in mode 2
 #' @slot deviceSettings A list of other device settings not covered by existing slots.
 #' @slot style A list of parameters inherited by all sections, layers and components in the page
-#' @slot p A list of parameters inherited by all sections, layers and components in the page
+#' @slot data A list of parameters inherited by all sections, layers and components in the page
 #' @slot units A list of units inherited by all sections, layers and components in the page
 #' @slot frames numeric vector. The set of frames
 #' @slot framesToPlot numeric vector. The set of frames plotting functions can be run.
 #' @param sections,... These parameters are merged into the sections slot.
-#' @param deviceSettings, name, style, p, units, frames, framesToPlot parameters for the constructor new("page") go directly into the relevant slots
+#' @param deviceSettings, name, style, data, units, frames, framesToPlot parameters for the constructor new("page") go directly into the relevant slots
 #' @details
 #' The default page...
 #' @export
@@ -21,7 +21,7 @@
 setClass("page",slots=c(sections="list",
 				name="character",
 				style="list",
-				p="list",
+				data="list",
 				units="list",
 				deviceSettings="list",
 				frames="numeric",
@@ -34,7 +34,7 @@ setMethod("initialize","page",function(.Object,...,
 		deviceSettings=list(),
 		name="page",
 		style=list(),
-		p=list(),
+		data=list(),
 		units=list(),
 		frames=1,
 		framesToPlot=1){
@@ -42,7 +42,7 @@ setMethod("initialize","page",function(.Object,...,
 			.Object@sections <- c(sections,list(...))
 			.Object@name <- name
 			.Object@style <- style
-			.Object@p <- p
+			.Object@data <- data
 			.Object@units <- units
 			.Object@frames<-frames
 			.Object@framesToPlot<-framesToPlot
@@ -51,4 +51,4 @@ setMethod("initialize","page",function(.Object,...,
 		
 #' @rdname pages
 #' @export
-scene=function(...){new("page",...)}
+page.new=function(...){new("page",...)}

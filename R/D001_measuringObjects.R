@@ -20,32 +20,32 @@ xScaleComponent=function(input,cmin=NULL,cmax=NULL){
 	answer=c(NA,NA)
 	if(!is.null(cmin)){answer[1]=cmin}
 	if(!is.null(cmax)){answer[2]=cmax}
-	if("x"%in%names(input@p)){
+	if("x"%in%names(input@data)){
 		if(is.na(answer[1])){
-			answer=c(min(input@p$x,na.rm=TRUE),max(input@p$x,na.rm=TRUE))
+			answer=c(min(input@data$x,na.rm=TRUE),max(input@data$x,na.rm=TRUE))
 		}else{
-			answer=c(min(answer[1],min(input@p$x,na.rm=TRUE)),max(answer[2],max(input@p$x,na.rm=TRUE)))
+			answer=c(min(answer[1],min(input@data$x,na.rm=TRUE)),max(answer[2],max(input@data$x,na.rm=TRUE)))
 		}
 	}
-	if("x0"%in%names(input@p)){
+	if("x0"%in%names(input@data)){
 		if(is.na(answer[1])){
-			answer=c(min(c(input@p$x0,na.rm=TRUE,input@p$x1,na.rm=TRUE)),max(c(input@p$x0,na.rm=TRUE,input@p$x1,na.rm=TRUE)))
+			answer=c(min(c(input@data$x0,na.rm=TRUE,input@data$x1,na.rm=TRUE)),max(c(input@data$x0,na.rm=TRUE,input@data$x1,na.rm=TRUE)))
 		}else{
-			answer=c(min(answer[1],min(c(input@p$x0,input@p$x1,na.rm=TRUE))),max(answer[2],max(c(input@p$x0,input@p$x1,na.rm=TRUE))))
+			answer=c(min(answer[1],min(c(input@data$x0,input@data$x1,na.rm=TRUE))),max(answer[2],max(c(input@data$x0,input@data$x1,na.rm=TRUE))))
 		}
 	}
-	if("xleft"%in%names(input@p)){
+	if("xleft"%in%names(input@data)){
 		if(is.na(answer[1])){
-			answer=c(min(input@p$xleft,na.rm=TRUE),max(input@p$xright,na.rm=TRUE))
+			answer=c(min(input@data$xleft,na.rm=TRUE),max(input@data$xright,na.rm=TRUE))
 		}else{
-			answer=c(min(answer[1],min(input@p$xleft,na.rm=TRUE)),max(answer[2],max(input@p$xright,na.rm=TRUE)))
+			answer=c(min(answer[1],min(input@data$xleft,na.rm=TRUE)),max(answer[2],max(input@data$xright,na.rm=TRUE)))
 		}
 	}
-	if("polygon_x"%in%names(input@p)){
+	if("polygon_x"%in%names(input@data)){
 		if(is.na(answer[1])){
-			answer=c(min(input@p$polygon_x,na.rm=TRUE),max(input@p$polygon_x,na.rm=TRUE))
+			answer=c(min(input@data$polygon_x,na.rm=TRUE),max(input@data$polygon_x,na.rm=TRUE))
 		}else{
-			answer=c(min(answer[1],min(input@p$polygon_x,na.rm=TRUE)),max(answer[2],max(input@p$polygon_x,na.rm=TRUE)))
+			answer=c(min(answer[1],min(input@data$polygon_x,na.rm=TRUE)),max(answer[2],max(input@data$polygon_x,na.rm=TRUE)))
 		}
 	}
 	return(answer)
@@ -58,32 +58,32 @@ yScaleComponent=function(input,cmin=NULL,cmax=NULL){
 	answer=c(NA,NA)
 	if(!is.null(cmin)){answer[1]=cmin}
 	if(!is.null(cmax)){answer[2]=cmax}
-	if("y"%in%names(input@p)){
+	if("y"%in%names(input@data)){
 		if(is.na(answer[1])){
-			answer=c(min(input@p$y,na.rm=TRUE),max(input@p$y,na.rm=TRUE))
+			answer=c(min(input@data$y,na.rm=TRUE),max(input@data$y,na.rm=TRUE))
 		}else{
-			answer=c(min(answer[1],min(input@p$y,na.rm=TRUE)),max(answer[2],max(input@p$y,na.rm=TRUE)))
+			answer=c(min(answer[1],min(input@data$y,na.rm=TRUE)),max(answer[2],max(input@data$y,na.rm=TRUE)))
 		}
 	}
-	if("y0"%in%names(input@p)){
+	if("y0"%in%names(input@data)){
 		if(is.na(answer[1])){
-			answer=c(min(c(input@p$y0,input@p$y1,na.rm=TRUE)),max(c(input@p$y0,input@p$y1,na.rm=TRUE)))
+			answer=c(min(c(input@data$y0,input@data$y1,na.rm=TRUE)),max(c(input@data$y0,input@data$y1,na.rm=TRUE)))
 		}else{
-			answer=c(min(answer[1],min(c(input@p$y0,input@p$y1,na.rm=TRUE))),max(answer[2],max(c(input@p$y0,input@p$y1,na.rm=TRUE))))
+			answer=c(min(answer[1],min(c(input@data$y0,input@data$y1,na.rm=TRUE))),max(answer[2],max(c(input@data$y0,input@data$y1,na.rm=TRUE))))
 		}
 	}
-	if("ytop"%in%names(input@p)){
+	if("ytop"%in%names(input@data)){
 		if(is.na(answer[1])){
-			answer=c(min(input@p$ybottom,na.rm=TRUE),max(input@p$ytop,na.rm=TRUE))
+			answer=c(min(input@data$ybottom,na.rm=TRUE),max(input@data$ytop,na.rm=TRUE))
 		}else{
-			answer=c(min(answer[1],min(input@p$ybottom,na.rm=TRUE)),max(answer[2],max(input@p$ytop,na.rm=TRUE)))
+			answer=c(min(answer[1],min(input@data$ybottom,na.rm=TRUE)),max(answer[2],max(input@data$ytop,na.rm=TRUE)))
 		}
 	}
-	if("polygon_y"%in%names(input@p)){
+	if("polygon_y"%in%names(input@data)){
 		if(is.na(answer[1])){
-			answer=c(min(input@p$polygon_y,na.rm=TRUE),max(input@p$polygon_y,na.rm=TRUE))
+			answer=c(min(input@data$polygon_y,na.rm=TRUE),max(input@data$polygon_y,na.rm=TRUE))
 		}else{
-			answer=c(min(answer[1],min(input@p$polygon_y,na.rm=TRUE)),max(answer[2],max(input@p$polygon_y,na.rm=TRUE)))
+			answer=c(min(answer[1],min(input@data$polygon_y,na.rm=TRUE)),max(answer[2],max(input@data$polygon_y,na.rm=TRUE)))
 		}
 	}
 	return(answer)

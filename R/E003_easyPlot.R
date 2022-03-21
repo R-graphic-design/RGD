@@ -23,7 +23,7 @@
 #' @param framesToPlot numeric.
 #' @param framerate numeric.
 #' @param innerMargin numeric. see addBorder 
-#' @param ... parameters passed to the final artwork using art=art+artp(...)
+#' @param ... parameters passed to the final artwork using art=art+artdata(...)
 #' @return depends on plotArt and mode and art@mode.
 #' @export
 #' @examples
@@ -51,7 +51,7 @@ easyPlot=function(art,border=0.1,useGrid=FALSE,format="screen",width=NULL,height
 		if(is.null(framesToPlot)){
 			framesToPlot=frames
 		}
-		art=scene(art,frames=frames,framesToPlot=framesToPlot)
+		art=page.new(art,frames=frames,framesToPlot=framesToPlot)
 	}
 	if(class(art)=="page"){
 		if(is.null(mode)){
@@ -59,7 +59,7 @@ easyPlot=function(art,border=0.1,useGrid=FALSE,format="screen",width=NULL,height
 		}
 		art=artwork(art,deviceSettings=deviceSettings,mode=mode)
 	}
-	art=art+artp(...)
+	art=art+artdata(...)
 	art=art-defaultArtSettings()
 	art@format=format
 	art@framerate=framerate

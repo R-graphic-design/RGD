@@ -2,15 +2,7 @@
 #'
 #' @description
 #' Functions to plot objects from this package.
-#' @param art
-#' @param input
-#' @param p
-#' @param units
-#' @param classes
-#' @param vp
-#' @param useGrid
-#' @param frameNumber
-#' @param xscale,yscale
+#' @param art accepts only a single art object
 #' @details
 #' @return
 #' @examples
@@ -134,7 +126,7 @@ plotArtwork=function(art){
 				}
 				#STEP 3 runningFunctions
 				print(paste("step 3",i,j))
-				art@pages[[i]]=runPageFunctions(art@pages[[i]],frameNumber=currentFrame)
+				art@pages[[i]]=runPageFunctions(art@pages[[i]],frameNumber=currentFrame,abcd="a")
 				if(art@mode==-1){
 					calculatedXLims=xScaleSection(art@pages[[1]]@sections[[1]],calculatedXLims[1],calculatedXLims[2])
 					calculatedYLims=yScaleSection(art@pages[[1]]@sections[[1]],calculatedYLims[1],calculatedYLims[2])
@@ -143,13 +135,15 @@ plotArtwork=function(art){
 				print(paste("step 4",i,j))
 				checkLastFrameToPlot=(currentFrame==art@pages[[i]]@framesToPlot[length(art@pages[[i]]@framesToPlot)])
 				if(checkFrameToPlot){
-					temp=runPageFunctions(art@pages[[i]],frameNumber=currentFrame,plotting=TRUE)
+					temp=runPageFunctions(art@pages[[i]],frameNumber=currentFrame,abcd="b")
+					temp=runPageFunctions(temp,frameNumber=currentFrame,abcd="c")
+					temp=runPageFunctions(temp,frameNumber=currentFrame,abcd="d")
 					if(art@mode==-1){
 						calculatedXLims=xScaleSection(art@pages[[1]]@sections[[1]],calculatedXLims[1],calculatedXLims[2])
 						calculatedYLims=yScaleSection(art@pages[[1]]@sections[[1]],calculatedYLims[1],calculatedYLims[2])
 					}
 					if(art@mode>-1){
-						plotPageSingleFrame(temp,p=art@p,units=art@units,classes=art@classes,vp=vpInfo,useGrid=art@useGrid,frameNumber=currentFrame)
+						plotPageSingleFrame(temp,data=art@data,units=art@units,classes=art@classes,vp=vpInfo,useGrid=art@useGrid,frameNumber=currentFrame)
 					}
 					#STEP 4B closing a device if necessary
 					if((art@mode%in%c(0,1)&&i==length(art@pages)&&checkLastFrameToPlot)|(art@mode>1)){
@@ -184,21 +178,23 @@ plotArtwork=function(art){
 
 #' @rdname plottingArtObjects
 #' @export
-plotPageAllFrames=function(input,p=list(),units=list(),classes=c(),vp=list(),useGrid=FALSE){
+#OBSOLETE ????
+#NOT UPDATED
+plotPageAllFrames=function(input,data=list(),units=list(),classes=c(),vp=list(),useGrid=FALSE){
 	for(i in input@frames){
 		#print(paste("frame=",i))
 		input=runPageFunctions(input,frameNumber=i)
 		if(i%in%input@framesToPlot){
 			temp=runPageFunctions(input,frameNumber=i,plotting=TRUE)
-			plotPageSingleFrame(temp,p=p,units=units,classes=classes,vp=vp,useGrid=FALSE,frameNumber=i)
+			plotPageSingleFrame(temp,data=data,units=units,classes=classes,vp=vp,useGrid=FALSE,frameNumber=i)
 		}
 	}
 }
 
 #' @rdname plottingArtObjects
 #' @export
-plotPageSingleFrame=function(input,p,units,classes,vp,useGrid,frameNumber){
-	newP=inheritParameters(p,input@p,classes=classes,useGrid=useGrid)
+plotPageSingleFrame=function(input,data,units,classes,vp,useGrid,frameNumber){
+	newData=inheritParameters(newData,input@data,classes=classes,useGrid=useGrid)
 	newUnits=inheritParameters(units,input@units,classes=classes,useGrid=useGrid)
 	
 	oldpar=c()
@@ -210,7 +206,7 @@ plotPageSingleFrame=function(input,p,units,classes,vp,useGrid,frameNumber){
 	if(length(input@sections)>0){
 		for(j in 1:length(input@sections)){
 			if(integerCheck(frameNumber,input@sections[[j]]@frames)){
-				plotSection(input@sections[[j]],p=newP,units=newUnits,classes=classes,vp=vp,useGrid=useGrid,frameNumber=frameNumber)
+				plotSection(input@sections[[j]],data=newData,units=newUnits,classes=classes,vp=vp,useGrid=useGrid,frameNumber=frameNumber)
 			}
 		}
 	}
@@ -223,7 +219,7 @@ plotPageSingleFrame=function(input,p,units,classes,vp,useGrid,frameNumber){
 
 #' @rdname plottingArtObjects
 #' @export
-plotSection=function(input,p=list(),units=list(),classes=as.character(),vp=list(x=0,y=0),useGrid=TRUE,frameNumber=1){
+plotSection=function(input,data=list(),units=list(),classes=as.character(),vp=list(x=0,y=0),useGrid=TRUE,frameNumber=1){
 numLayers=length(input@layers)
 numSections=length(input@sections)
 if(useGrid){
@@ -238,7 +234,7 @@ currentViewport=viewport(x =unit(input@x,input@units$x),
          angle = 0)#input@angle)
 	pushViewport(currentViewport)
 }
-	newP=inheritParameters(p,input@p,classes=classes)
+	newData=inheritParameters(data,input@data,classes=classes)
 	newUnits=inheritParameters(units,input@units,classes=classes)
 	
 	#ASSUMES just =center
@@ -378,14 +374,14 @@ currentViewport=viewport(x =unit(input@x,input@units$x),
 	if(numLayers>0){
 		for(i in 1:numLayers){
 			if(input@layers[[i]]@visible&&integerCheck(frameNumber,input@layers[[i]]@frames)){
-				plotLayer(input@layers[[i]],useGrid=useGrid,p=newP,units=newUnits,classes=classes,vp=newVP,xscale=input@xscale,yscale=input@yscale,frameNumber=frameNumber)
+				plotLayer(input@layers[[i]],useGrid=useGrid,data=newData,units=newUnits,classes=classes,vp=newVP,xscale=input@xscale,yscale=input@yscale,frameNumber=frameNumber)
 			}
 		}
 	}
 	if(numSections>0){
 		for(i in 1:numSections){
 			if(integerCheck(frameNumber,input@sections[[i]]@frames)){
-				plotSection(input@sections[[i]],p=newP,units=newUnits,classes=classes,vp=newVP,useGrid=useGrid,frameNumber=frameNumber)#DON'T NEED xscale?yscale???
+				plotSection(input@sections[[i]],data=newData,units=newUnits,classes=classes,vp=newVP,useGrid=useGrid,frameNumber=frameNumber)#DON'T NEED xscale?yscale???
 			}
 		}
 	}
@@ -395,20 +391,20 @@ currentViewport=viewport(x =unit(input@x,input@units$x),
 }
 #' @rdname plottingArtObjects
 #' @export
-plotLayer=function(layer,useGrid,p=list(),units=list(),classes=as.character(),vp=list(x=0,y=0),xscale=0:1,yscale=0:1,frameNumber=1){
+plotLayer=function(layer,useGrid,data=list(),units=list(),classes=as.character(),vp=list(x=0,y=0),xscale=0:1,yscale=0:1,frameNumber=1){
 	if(!useGrid){
 		oldpar<-par(calibrateParameters(layer@style,useGrid=FALSE))
 	}else{
 		#THIS NEEDS CHANGING
 		pushViewport(viewport(gp=calibrateParameters(layer@style,useGrid=TRUE),xscale=xscale,yscale=yscale))
 	}
-	newP=inheritParameters(p,layer@p,classes=classes)
+	newData=inheritParameters(data,layer@data,classes=classes)
 	newUnits=inheritParameters(units,layer@units,classes=classes)
 	if(layer@visible){
 		if(length(layer@components)>0){
 			for(i in 1:length(layer@components)){
 				if(layer@components[[i]]@visible&&integerCheck(frameNumber,layer@components[[i]]@frames)){
-					plotComponent(layer@components[[i]],useGrid=useGrid,p=newP,units=newUnits,classes=classes,vp=vp,xscale=xscale,yscale=yscale)
+					plotComponent(layer@components[[i]],useGrid=useGrid,data=newData,units=newUnits,classes=classes,vp=vp,xscale=xscale,yscale=yscale)
 				}
 			}
 		}
@@ -416,7 +412,7 @@ plotLayer=function(layer,useGrid,p=list(),units=list(),classes=as.character(),vp
 		if(length(layer@layers)>0){
 			for(i in 1:length(layer@layers)){
 				if(layer@layers[[i]]@visible&&integerCheck(frameNumber,layer@layers[[i]]@frames)){
-					plotLayer(layer@layers[[i]],useGrid=useGrid,p=newP,units=newUnits,classes=classes,vp=vp,xscale=xscale,yscale=yscale,frameNumber=frameNumber)
+					plotLayer(layer@layers[[i]],useGrid=useGrid,data=newData,units=newUnits,classes=classes,vp=vp,xscale=xscale,yscale=yscale,frameNumber=frameNumber)
 				}
 			}
 		}
@@ -429,8 +425,8 @@ plotLayer=function(layer,useGrid,p=list(),units=list(),classes=as.character(),vp
 }
 #' @rdname plottingArtObjects
 #' @export
-plotComponent=function(component,useGrid,p=list(),units=list(),classes=as.character(),vp=list(x=0,y=0),xscale=0:1,yscale=0:1){
-	newP=inheritParameters(p,component@p,classes=classes,useGrid=useGrid)
+plotComponent=function(component,useGrid,data=list(),units=list(),classes=as.character(),vp=list(x=0,y=0),xscale=0:1,yscale=0:1){
+	newData=inheritParameters(data,component@data,classes=classes,useGrid=useGrid)
 	newUnits=inheritParameters(units,component@units,classes=classes,useGrid=useGrid)
 	for(i in 1:length(component@type)){
 		plotFunction=component@type[i]
@@ -438,8 +434,8 @@ plotComponent=function(component,useGrid,p=list(),units=list(),classes=as.charac
 			#switch to base if from grid
 
 			
-			#print(names(newP))
-			#print(getpar(newP,fun=plotFunction,style=FALSE,classes=classes,vp=vp,units=newUnits,xscale=xscale,yscale=yscale))
+			#print(names(newData))
+			#print(getpar(newData,fun=plotFunction,style=FALSE,classes=classes,vp=vp,units=newUnits,xscale=xscale,yscale=yscale))
 			#print("-----")
 			for(j in 1:4){
 				if(plotFunction%in%names(classes)){plotFunction=classes[[plotFunction]]}
@@ -452,7 +448,7 @@ plotComponent=function(component,useGrid,p=list(),units=list(),classes=as.charac
 			oldpar=c()
 			if(length(component@style)>0){oldpar<-par(calibrateParameters(component@style,fun=component@type[i],style=TRUE,classes=classes,useGrid=FALSE))}
 			#print(plotFunction)
-			do.call(plotFunction,calibrateParameters(newP,fun=component@type[i],style=FALSE,classes=classes,vp=vp,units=newUnits,xscale=xscale,yscale=yscale,useGrid=FALSE))
+			do.call(plotFunction,calibrateParameters(newData,fun=component@type[i],style=FALSE,classes=classes,vp=vp,units=newUnits,xscale=xscale,yscale=yscale,useGrid=FALSE))
 			if(length(component@style)>0){par(oldpar)}
 		}else{
 			
@@ -469,13 +465,13 @@ plotComponent=function(component,useGrid,p=list(),units=list(),classes=as.charac
 			if(length(parsToMove)>0){
 				patternSearch=paste0("(",paste0(parsToMove,collapse="|"),")$")
 				print(paste("patternSearch",patternSearch))
-				print(paste("new P",names(newP)))
-				parsToMove=(names(newP))[which(regexpr(text=names(newP),pattern=patternSearch,perl=TRUE)>0)]
+				print(paste("new Data",names(newData)))
+				parsToMove=(names(newData))[which(regexpr(text=names(newData),pattern=patternSearch,perl=TRUE)>0)]
 			}
 			print(paste("parsToMove",parsToMove))
 			vpPushed=FALSE
 			if(length(component@style)+length(parsToMove)>0){
-				pars=calibrateParameters(component@style,fun=component@type[i],classes=classes,useGrid=TRUE,style=TRUE,additions=newP[parsToMove])
+				pars=calibrateParameters(component@style,fun=component@type[i],classes=classes,useGrid=TRUE,style=TRUE,additions=newData[parsToMove])
 				print(paste("pars (push VP if not empty)",length(pars)))
 				print(c(xscale,yscale))
 				if(length(pars)>0){
@@ -485,7 +481,7 @@ plotComponent=function(component,useGrid,p=list(),units=list(),classes=as.charac
 			}
 			print("DEBUG 05_126")
 			print(paste("vpPushed",vpPushed))
-			do.call(plotFunction,c(calibrateParameters(newP,units=newUnits,fun=plotFunction,classes=classes,useGrid=TRUE,style=FALSE)))
+			do.call(plotFunction,c(calibrateParameters(newData,units=newUnits,fun=plotFunction,classes=classes,useGrid=TRUE,style=FALSE)))
 			if(vpPushed){popViewport()}
 		}
 	}

@@ -13,7 +13,7 @@
 #' @name sectionfunctions
 setClass("sectionfunction",slots=c(fun="ANY",returnSection="logical",frames="integerSet"))
 #' @rdname sectionfunctions
-#' @method initialise sectionfunction
+#/' @method initialise sectionfunction
 #' @export
 setMethod("initialize","sectionfunction",function(.Object,fun=function(x){x},returnSection=TRUE,frames=integerSet()){
 	.Object@fun=fun
@@ -24,38 +24,42 @@ setMethod("initialize","sectionfunction",function(.Object,fun=function(x){x},ret
 })
 #' @rdname sectionfunctions
 #' @export
+sectionfunction=function(...){new("sectionfunction",...)}
+#' @rdname sectionfunctions
+#' @export
 runSectionFunction=function(input,inputFun,frameNumber){
-#print("running runSectionFunction")
-if(inputFun@returnSection){
-	if("frameNumber"%in%names(as.list(args(inputFun@fun)))){
-		return(do.call(inputFun@fun,c(list(input),frameNumber=frameNumber)))
-	}else{
-		return(do.call(inputFun@fun,list(input)))		
+	#print("running runSectionFunction")
+	if(inputFun@returnSection){
+		if("frameNumber"%in%names(as.list(args(inputFun@fun)))){
+			return(do.call(inputFun@fun,c(list(input),frameNumber=frameNumber)))
+		}else{
+			return(do.call(inputFun@fun,list(input)))		
+		}
 	}
-}
 }
 
 
 #' @rdname sectionfunctions
 #' @export
-
-runSectionFunctions=function(input,classes=list(),getData=FALSE,frameNumber=1,plotting=FALSE){
-#print("running runSectionFunctions")
-#print(class(input))
-if(getData){input=getRequiredDataSection(input)}
+runSectionFunctions=function(input,classes=list(),getData=FALSE,frameNumber,abcd="a"){
+	if(getData){input=getRequiredDataSection(input)}
 	answer=input
-	listFuns=answer@functions
+	listFuns=list()
+	if(abcd=="a"){listFuns=input@action}
+	if(abcd=="b"){listFuns=input@build}
+	if(abcd=="c"){listFuns=input@camera}
+	if(abcd=="d"){listFuns=input@display}
 	if(!"numeric"%in%sapply(FUN=class,listFuns)){listFuns=c(listFuns,0)}
 	for(i in 1:length(listFuns)){
 		if(class(listFuns[[i]])=="numeric"){
 			if(length(answer@sections)>0){
 				for(j in 1:length(answer@sections)){
-					answer@sections[[j]]=runSectionFunctions(answer@sections[[j]],frameNumber=frameNumber,plotting=plotting)
+					answer@sections[[j]]=runSectionFunctions(answer@sections[[j]],frameNumber=frameNumber,abcd=abcd)
 				}
 			}
 			if(length(answer@layers)>0){
 				for(j in 1:length(answer@layers)){
-					answer@layers[[j]]=runLayerFunctions(answer@layers[[j]],frameNumber=frameNumber,plotting=plotting)
+					answer@layers[[j]]=runLayerFunctions(answer@layers[[j]],frameNumber=frameNumber,abcd=abcd)
 				}
 			}
 		}else if(class(listFuns[[i]])%in%c("sectionfunction")&&integerCheck(frameNumber,listFuns[[i]]@frames)){

@@ -21,7 +21,7 @@ NULL
 #' @rdname SvenssonAttractor
 #' @export
 makeSvenssonAttractor=function(type="points",...){
-	return(component(type=type,...)+p2p_cf("runSvenssonAttractor",...))
+	return(component(type=type,...)+action.data("runSvenssonAttractor",...))
 }
 
 #' @rdname SvenssonAttractor

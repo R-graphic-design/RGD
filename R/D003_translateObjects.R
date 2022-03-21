@@ -20,25 +20,25 @@ translateComponent=function(input,translateX=0,translateY=0,xcoordinates=coordin
 	if(length(translateX)==2){translateY=translateX[2];translateX=translateX[1]}
 	if(translateX!=0&length(xcoordinates)>0){
 		for(i in xcoordinates){
-			if(i%in%names(input@p)){
-				input@p[[i]]=input@p[[i]]+translateX
+			if(i%in%names(input@data)){
+				input@data[[i]]=input@data[[i]]+translateX
 			}
 			#translates text_yinches etc even though they aren't in coordinate Names
 			functionMatch= gsub(pattern=".+?(?=_)_",x=i,replacement="",perl=TRUE)
-			if(length(functionMatch)>0&&functionMatch%in%names(input@p)){
-				input@p[functionMatch]=input@p[[functionMatch]]+translateX			
+			if(length(functionMatch)>0&&functionMatch%in%names(input@data)){
+				input@data[functionMatch]=input@data[[functionMatch]]+translateX			
 			}
 		}
 	}
 	if(translateY!=0&length(ycoordinates)>0){
 		for(i in ycoordinates){
-			if(i%in%names(input@p)){
-				input@p[[i]]=input@p[[i]]+translateY
+			if(i%in%names(input@data)){
+				input@data[[i]]=input@data[[i]]+translateY
 			}
 			#translates text_yinches etc even though they aren't in coordinate Names
 			functionMatch= gsub(pattern=".+?(?=_)_",x=i,replacement="",perl=TRUE)
-			if(length(functionMatch)>0&&functionMatch%in%names(input@p)){
-				input@p[functionMatch]=input@p[[functionMatch]]+translateY			
+			if(length(functionMatch)>0&&functionMatch%in%names(input@data)){
+				input@data[functionMatch]=input@data[[functionMatch]]+translateY			
 			}
 		}
 	}
@@ -52,25 +52,25 @@ translateLayer=function(input,translateX=0,translateY=0,xcoordinates=coordinateN
 	#Layer P 
 	if(translateX!=0&length(xcoordinates)>0){
 		for(i in xcoordinates){
-			if(i%in%names(input@p)){
-				input@p[[i]]=input@p[[i]]+translateX
+			if(i%in%names(input@data)){
+				input@data[[i]]=input@data[[i]]+translateX
 			}
 			#translates text_yinches etc even though they aren't in coordinate Names
 			functionMatch= gsub(pattern=".+?(?=_)_",x=i,replacement="",perl=TRUE)
-			if(length(functionMatch)>0&&functionMatch%in%names(input@p)){
-				input@p[functionMatch]=input@p[[functionMatch]]+translateX			
+			if(length(functionMatch)>0&&functionMatch%in%names(input@data)){
+				input@data[functionMatch]=input@data[[functionMatch]]+translateX			
 			}
 		}
 	}
 	if(translateY!=0&length(ycoordinates)>0){
 		for(i in ycoordinates){
-			if(i%in%names(input@p)){
-				input@p[[i]]=input@p[[i]]+translateY
+			if(i%in%names(input@data)){
+				input@data[[i]]=input@data[[i]]+translateY
 			}
 			#translates text_yinches etc even though they aren't in coordinate Names
 			functionMatch= gsub(pattern=".+?(?=_)_",x=i,replacement="",perl=TRUE)
-			if(length(functionMatch)>0&&functionMatch%in%names(input@p)){
-				input@p[functionMatch]=input@p[[functionMatch]]+translateY			
+			if(length(functionMatch)>0&&functionMatch%in%names(input@data)){
+				input@data[functionMatch]=input@data[[functionMatch]]+translateY			
 			}
 		}
 	}

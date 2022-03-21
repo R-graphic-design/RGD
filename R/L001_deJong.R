@@ -22,7 +22,7 @@ NULL
 #' @rdname DeJongAttractor
 #' @export
 makeDeJongAttractor=function(type="points",...){
-	return(component(type=type,...)+p2p_cf("runDeJongAttractor",...))
+	return(component(type=type,...)+action.data("runDeJongAttractor",...))
 }
 
 #' @rdname DeJongAttractor

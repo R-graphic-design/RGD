@@ -19,5 +19,5 @@ makeImage=function(type="rasterImage",xleft=0,xright=1,ytop=1,ybottom=0,...){
 #' @rdname makeImage
 #' @export
 makeImageFromMatrix=function(...){
-	return(makeImage(...)+p2p_cf("imageColourScheme",...)+c2c_cf("matrixToColours",...))
+	return(makeImage(...)+action.data("imageColourScheme",...)+action.comp("matrixToColours",...))
 }

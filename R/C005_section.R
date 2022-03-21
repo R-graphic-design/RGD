@@ -5,14 +5,15 @@
 #' @slot x,y,just used to position the section
 #' @slot width,height used to give the size of the section
 #' @slot clip if grid is used, this controls clipping.
-#' @slot p a list of parameters inherited by components, layers and sections in this section
+#' @slot data a list of parameters inherited by components, layers and sections in this section
 #' @slot style a list of parameters inherited by components, layers and sections in this section
 #' @slot angle used for rotation of viewports in grid
 #' @slot xscale,yscale used for co-ordinates that use "native" co-ordinate units
 #' @slot layers a list of layers
 #' @slot sections a list of sections
 #' @slot units a list of units inherited by components, layers and sections in this section
-#' @slot functions a list of section functions that can apply to the section, the list of parameters p or layers, components and sections contained in the section.
+#' @slot action,build,display a list of section functions that can apply to the section, the list of parameters in data or layers, components and sections contained in the section.
+#' @slot camera a list of functions that apply to layers and components in the section.
 #' @slot tags USED??? REMOVE??
 #' @slot frames controls which frames the section is plotted.
 #' @param layers,... These parameters are merged into the layers slot.
@@ -38,10 +39,13 @@ setClass("section",slots=c(x="ANY",#should be unit or unit.arithmetic OR LIST fo
 				angle="numeric",
 				layers="list",
 				sections="list",
-				p="list",
+				data="list",
 				style="list",
 				units="list",
-				functions="list",
+				action="list",
+				build="list",
+				camera="list",
+				display="list",
 				tags="character",
 				frames="integerSet"))
 				
@@ -60,14 +64,17 @@ setMethod("initialize","section",function(.Object,...,
 		angle=1,
 		layers=list(),
 		sections=list(),
-		p=list(),
+		data=list(),
 		style=list(),
 		units=list(),
 		borderCol=NULL,# border items not yet used
 		fillCol=NULL,
 		borderLWD=0.05,
 		tableBox=NULL,
-		functions=list(),
+		action=list(),
+		build=list(),
+		camera=list(),
+		display=list(),
 		frames=integerSet(),
 		tags=as.character()){#tableBox implemented but could change??
 	.Object@x<-x
@@ -82,10 +89,13 @@ setMethod("initialize","section",function(.Object,...,
 	.Object@layers<-c(layers,list(...))
 	.Object@sections<-sections
 	#.Object@visible<-visible
-	.Object@p<-p
+	.Object@data<-data
 	.Object@style<-style
 	.Object@units<-units
-	.Object@functions<-functions
+	.Object@action<-action
+	.Object@build<-build
+	.Object@display<-display
+	.Object@camera<-camera
 	.Object@tags<-tags
 	if(class(frames)=="numeric"){frames=integerSet(frames)}
 	.Object@frames<-frames

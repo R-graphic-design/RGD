@@ -56,7 +56,7 @@ runJuliaPlot=function(size=c(1000,1000),xScale=c(-2,2),yScale=c(-2,2),coefficien
 #' @rdname juliaPlots
 #' @export
 makeJuliaPlot=function(...){
-	answer=makeImage(...)+p2p_cf(c("runJuliaPlot","matrixToColours"),...)
+	answer=makeImage(...)+action.data(c("runJuliaPlot","matrixToColours"),...)
 	return(answer)
 }
 

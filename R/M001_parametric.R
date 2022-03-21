@@ -16,20 +16,20 @@ NULL
 #' @rdname makeParametric
 #' @export
 runParametric=function(xFun=function(x){sin(x*2*pi)},yFun=function(x){sin(x*4*pi)},parameterSpace){
-answer=list(x=do.call(xFun,list(parameterSpace)),y=do.call(yFun,list(parameterSpace)))
-return(answer)
+	answer=list(x=do.call(xFun,list(parameterSpace)),y=do.call(yFun,list(parameterSpace)))
+	return(answer)
 }
 #' @rdname makeParametric
 #' @export
 makeTSpace=function(tmin=0,tmax=1,lent=101){
-return(list(parameterSpace=seq(tmin,tmax,length.out=lent)))
+	return(list(parameterSpace=seq(tmin,tmax,length.out=lent)))
 }
 #' @rdname makeParametric
 #' @export
 makeParametric=function(type="lines",...){
 	if("parameterSpace"%in%names(list(...))){
-		return(component(type=type,...)+p2p_cf("runParametric",...))
+		return(component(type=type,...)+action.data("runParametric",...))
 	}else{
-		return(component(type=type,...)+p2p_cf(c("makeTSpace","runParametric"),...))
+		return(component(type=type,...)+action.data(c("makeTSpace","runParametric"),...))
 	}
 }

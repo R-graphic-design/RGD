@@ -16,7 +16,7 @@
 #' @slot viewports WHAT IS THIS?? DELETE????
 #' @slot fonts a character vector of font names.
 #' @slot style A list of parameters inherited by all pages, sections, layers and components in the artwork
-#' @slot p A list of parameters inherited by all pages, sections, layers and components in the artwork
+#' @slot data A list of parameters inherited by all pages, sections, layers and components in the artwork
 #' @slot units A list of units inherited by all pages, sections, layers and components in the artwork
 #' @slot classes A list that connects component types to plotting functions.
 #' @slot psdata NOT USED ANYWHERE WHAT IS THIS DELETE IT?????????
@@ -59,7 +59,7 @@ setClass("artwork",slots=c(pages="list",
 				viewports="list",
 				fonts="ANY",
 				style="list",
-				p="list",
+				data="list",
 				units="list",
 				classes="character",
 				psdata="list",
@@ -81,7 +81,7 @@ setMethod("initialize","artwork",function(.Object,...,
 		useShowText=FALSE,
 		viewports=list(),
 		style=list(mai=c(0,0,0,0),xaxt="n",yaxt="n",yaxs="i",xaxs="i",mgp=c(0,0,0),oma=c(0,0,0,0),plt=c(0,1,0,1)),
-		p=list(artBorder_col="white",artBorder_border="black"),
+		data=list(artBorder_col="white",artBorder_border="black"),
 		units=list(),
 		fonts="",
 		classes=c(artBorder="rect"),
@@ -103,7 +103,7 @@ setMethod("initialize","artwork",function(.Object,...,
 .Object@fonts<-fonts
 .Object@style<-style
 .Object@units<-units
-.Object@p<-p
+.Object@data<-data
 .Object@classes<-classes
 .Object@psdata<-psdata
 .Object@framerate<-framerate
