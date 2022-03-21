@@ -31,5 +31,5 @@ runChaosGame calculates the points. makeChaosGame makes a component that calcula
 }
 \examples{
 art=makeChaosGame(decisionMode=2,cex=0.1,pch=21,runTime=10000)
-easyPlot(art,preserveAspectRatio=TRUE)
+#easyPlot(art,preserveAspectRatio=TRUE)
 }

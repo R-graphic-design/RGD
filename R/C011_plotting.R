@@ -194,7 +194,7 @@ plotPageAllFrames=function(input,data=list(),units=list(),classes=c(),vp=list(),
 #' @rdname plottingArtObjects
 #' @export
 plotPageSingleFrame=function(input,data,units,classes,vp,useGrid,frameNumber){
-	newData=inheritParameters(newData,input@data,classes=classes,useGrid=useGrid)
+	newData=inheritParameters(data,input@data,classes=classes,useGrid=useGrid)
 	newUnits=inheritParameters(units,input@units,classes=classes,useGrid=useGrid)
 	
 	oldpar=c()

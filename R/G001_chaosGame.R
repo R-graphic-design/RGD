@@ -7,7 +7,7 @@
 
 #' @examples
 #' art=makeChaosGame(decisionMode=2,cex=0.1,pch=21,runTime=10000)
-#' easyPlot(art,preserveAspectRatio=TRUE)
+#' #easyPlot(art,preserveAspectRatio=TRUE)
 #' @name ChaosGame
 NULL
 #> NULL
