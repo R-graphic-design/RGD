@@ -12,5 +12,5 @@
 #' print(1+1)
 #' @name quickfunctions
 action.data=function(functions=c(),.abcd="a",.useData=TRUE,...){
-	return(functionList(functions=c(),.abcd=.abcd,.useData=.useData,...)
+	return(functionList(functions=c(),.abcd=.abcd,.useData=.useData,...))
 }
