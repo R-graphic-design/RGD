@@ -146,7 +146,7 @@ setMethod("+",c("layer","functionList"),function(e1,e2){
 
 #' @rdname functionList
 #' @export
-etMethod("-",c("layer","functionList"),function(e1,e2){
+setMethod("-",c("layer","functionList"),function(e1,e2){
 	actionsToAdd=list()
 	buildToAdd=list()
 	displayToAdd=list()
