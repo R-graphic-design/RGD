@@ -16,8 +16,10 @@ layer(...)
   style = list(),
   visible = TRUE,
   units = list(),
-  p = list(),
-  functions = list(),
+  data = list(),
+  action = list(),
+  build = list(),
+  display = list(),
   components = list(),
   layers = list(),
   frames = integerSet()
@@ -51,13 +53,17 @@ The default layer made by the constructor completely empty, with no parameters, 
 
 \item{\code{units}}{A list of units inherited by components and layers in this layer}
 
-\item{\code{p}}{a list of parameters inherited by components and layers in this layer}
+\item{\code{data}}{a list of parameters inherited by components and layers in this layer}
 
 \item{\code{style}}{a list of parameters inherited by components and layers in this layer}
 
 \item{\code{visible}}{logical. If FALSE the layer isn't plotted.}
 
-\item{\code{functions}}{list. Functions that act on the layer or the elements of p or the list of components.}
+\item{\code{action}}{list. Functions that act on the layer or its data or its components.}
+
+\item{\code{build}}{list.}
+
+\item{\code{display}}{list.}
 
 \item{\code{frames}}{an integerSet. The set of frames the layer can be displayed in, (assuming visible is TRUE).}
 }}

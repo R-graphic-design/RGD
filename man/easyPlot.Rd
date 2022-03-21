@@ -75,7 +75,7 @@ easyPlot(
 
 \item{innerMargin}{numeric. see addBorder}
 
-\item{...}{parameters passed to the final artwork using art=art+artp(...)}
+\item{...}{parameters passed to the final artwork using art=art+artdata(...)}
 }
 \value{
 depends on plotArt and mode and art@mode.

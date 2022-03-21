@@ -25,7 +25,7 @@
   viewports = list(),
   style = list(mai = c(0, 0, 0, 0), xaxt = "n", yaxt = "n", yaxs = "i", xaxs = "i", mgp
     = c(0, 0, 0), oma = c(0, 0, 0, 0), plt = c(0, 1, 0, 1)),
-  p = list(artBorder_col = "white", artBorder_border = "black"),
+  data = list(artBorder_col = "white", artBorder_border = "black"),
   units = list(),
   fonts = "",
   classes = c(artBorder = "rect"),
@@ -91,7 +91,7 @@ The possible values of mode are:
 
 \item{\code{style}}{A list of parameters inherited by all pages, sections, layers and components in the artwork}
 
-\item{\code{p}}{A list of parameters inherited by all pages, sections, layers and components in the artwork}
+\item{\code{data}}{A list of parameters inherited by all pages, sections, layers and components in the artwork}
 
 \item{\code{units}}{A list of units inherited by all pages, sections, layers and components in the artwork}
 

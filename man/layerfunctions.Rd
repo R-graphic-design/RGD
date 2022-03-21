@@ -4,6 +4,7 @@
 \name{layerfunctions}
 \alias{layerfunctions}
 \alias{initialize,layerfunction-method}
+\alias{layerfunction}
 \alias{runLayerFunction}
 \alias{runLayerFunctions}
 \title{layerfunctions}
@@ -12,9 +13,10 @@
   .Object,
   fun = function(x) {     x },
   returnLayer = TRUE,
-  frames = integerSet(),
-  plotting = FALSE
+  frames = integerSet()
 )
+
+layerfunction(...)
 
 runLayerFunction(input, inputFun, classes, frameNumber)
 
@@ -23,14 +25,14 @@ runLayerFunctions(
   classes = list(),
   getData = FALSE,
   frameNumber,
-  plotting = FALSE
+  abcd = "a"
 )
 }
 \description{
 An S4 class for functions that operate on layers or their parameters
 }
 \details{
-p2p_lf() and l2l_lf() are convenient ways to add layerfunctions to layers.
+action.layer, action.data, etc... are convenient ways to add layerfunctions to layers.
 }
 \section{Slots}{
 
@@ -40,8 +42,6 @@ p2p_lf() and l2l_lf() are convenient ways to add layerfunctions to layers.
 \item{\code{returnLayer}}{logical. If TRUE the function in fun accepts and returns layer objects. If FALSE it accepts parameters like a normal R function and returns a named list of parameters.}
 
 \item{\code{frames}}{an integerSet object. Controls on which frames the function runs. The default behaviour is that it runs on all frames.}
-
-\item{\code{plotting}}{logical controls whether the function has a temporary effect or permanent during the plotting process.}
 }}
 
 \examples{

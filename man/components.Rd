@@ -14,8 +14,10 @@ component(...)
   type = "points",
   style = list(),
   units = list(),
-  p = list(),
-  functions = list(),
+  data = list(),
+  action = list(),
+  build = list(),
+  display = list(),
   active = TRUE,
   visible = TRUE,
   ref = as.character(),
@@ -25,9 +27,9 @@ component(...)
 component(...)
 }
 \arguments{
-\item{type, style, units, functions, active, visible}{parameters for the constructor new("component") go directly into the relevant slots}
+\item{type, style, units, action, build, display, active, visible}{parameters for the constructor new("component") go directly into the relevant slots}
 
-\item{p, ref, ...}{These parameters are merged into the p slot. Note any arguments named ".frames", ".plotting" and ".repeats" are ignored.}
+\item{data, ref, ...}{These parameters are merged into the data slot. Note any arguments named ".type",".frames", ".abcd", ".useData" and ".repeats" are ignored.}
 
 \item{frames}{If this is an integerSet, it goes directly into the relevant slot. If it is a numeric vector it is converted into an integerSet for you.}
 }
@@ -35,7 +37,7 @@ component(...)
 An S4 class to represent a single element in a graphic;
 }
 \details{
-The default component made by the constructor is a point, with no parameters, no functions, no units. It is active and plotted on every frame.
+The default component made by the constructor is a point, with no parameters, no functions and no units. It is active and plotted on every frame.
 }
 \section{Slots}{
 
@@ -44,7 +46,7 @@ The default component made by the constructor is a point, with no parameters, no
 
 \item{\code{units}}{A list of units to use for parameters.}
 
-\item{\code{p}}{a list of parameters.}
+\item{\code{data}}{a list of parameters.}
 
 \item{\code{style}}{a list of parameters to pass to par or gpar that are set for this component only.}
 
@@ -52,7 +54,11 @@ The default component made by the constructor is a point, with no parameters, no
 
 \item{\code{visible}}{logical. If FALSE the component isn't plotted.}
 
-\item{\code{functions}}{list. Functions that act on the component or the elements of p.}
+\item{\code{action}}{list. Functions that act on the component or the elements of data. Changes made persist between frames. Actions run before build, camera, display and plot functions.}
+
+\item{\code{build}}{list. Functions that act on the component or the elements of data. Changes made last until the frame is plotted. Build functions run before camera, display and plot functions.}
+
+\item{\code{display}}{list. Functions that act on the component or the elements of data. Changes made last until the frame is plotted. Display functions run before plot functions.}
 
 \item{\code{frames}}{an integerSet. The set of frames the component can be displayed in, (assuming visible is TRUE).}
 }}

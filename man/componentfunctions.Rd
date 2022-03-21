@@ -14,8 +14,7 @@
   fun = function(x) {     x },
   repeats = 1,
   returnComponents = TRUE,
-  frames = integerSet(),
-  plotting = FALSE
+  frames = integerSet()
 )
 
 componentfunction(...)
@@ -27,14 +26,14 @@ runComponentFunctions(
   classes = list(),
   getData = FALSE,
   frameNumber = 0,
-  plotting = FALSE
+  abcd = "a"
 )
 }
 \description{
 An S4 class for functions that operate on components or their parameters
 }
 \details{
-p2p_cf() and c2c_cf() are convenient ways to add componentfunctions to components.
+action.data, action.comp, build.data, build.comp, display.data and display.comp are convenient ways to add componentfunctions to components.
 }
 \section{Slots}{
 
@@ -46,8 +45,6 @@ p2p_cf() and c2c_cf() are convenient ways to add componentfunctions to component
 \item{\code{returnComponents}}{logical. If TRUE the function in fun accepts and returns component objects. If FALSE it accepts parameters like a normal R function and returns a named list of parameters.}
 
 \item{\code{frames}}{an integerSet object. Controls on which frames the function runs. The default behaviour is that it runs on all frames.}
-
-\item{\code{plotting}}{logical controls whether the function has a temporary effect or permanent during the plotting process.}
 }}
 
 \examples{

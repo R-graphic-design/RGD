@@ -26,7 +26,7 @@ addBorder=function(art,extra=0.1,res=NULL,foreground="black",mode=0,useGrid=FALS
 
 	print("RUNNING ADD BORDER BASE")
 	#First the background
-	boxCBG=component(type="artBorderBackground",units=list(ybottom="npc",ytop="npc",xleft="npc",xright="npc"))+artp(ybottom=0,ytop=1,xleft=0,xright=1,...)
+	boxCBG=component(type="artBorderBackground",units=list(ybottom="npc",ytop="npc",xleft="npc",xright="npc"))+artData(ybottom=0,ytop=1,xleft=0,xright=1,...)
 	boxLBG=layer(boxCBG)
 
 	#Next the original content
@@ -39,8 +39,8 @@ addBorder=function(art,extra=0.1,res=NULL,foreground="black",mode=0,useGrid=FALS
 	#Then the border
 	boxLFG=layer()
 	if(!is.na(foreground)){
-		#boxCFG=new("component",type="artBorderForeground",units=list(ybottom="npc",ytop="npc",xleft="npc",xright="npc"))+artp(ybottom=0,ytop=1,xleft=0,xright=1,.border=foreground)
-		boxCFG=component(type="artBorderForeground",units=list(y="npc",x="npc"))+artp(x=c(0,0,1,1),y=c(0,1,1,0),.border=foreground)
+		#boxCFG=new("component",type="artBorderForeground",units=list(ybottom="npc",ytop="npc",xleft="npc",xright="npc"))+artData(ybottom=0,ytop=1,xleft=0,xright=1,.border=foreground)
+		boxCFG=component(type="artBorderForeground",units=list(y="npc",x="npc"))+artData(x=c(0,0,1,1),y=c(0,1,1,0),.border=foreground)
 
 		boxLFG=layer(boxCFG)
 	}

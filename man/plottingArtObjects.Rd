@@ -14,18 +14,18 @@ plotArtwork(art)
 
 plotPageAllFrames(
   input,
-  p = list(),
+  data = list(),
   units = list(),
   classes = c(),
   vp = list(),
   useGrid = FALSE
 )
 
-plotPageSingleFrame(input, p, units, classes, vp, useGrid, frameNumber)
+plotPageSingleFrame(input, data, units, classes, vp, useGrid, frameNumber)
 
 plotSection(
   input,
-  p = list(),
+  data = list(),
   units = list(),
   classes = as.character(),
   vp = list(x = 0, y = 0),
@@ -36,7 +36,7 @@ plotSection(
 plotLayer(
   layer,
   useGrid,
-  p = list(),
+  data = list(),
   units = list(),
   classes = as.character(),
   vp = list(x = 0, y = 0),
@@ -48,13 +48,16 @@ plotLayer(
 plotComponent(
   component,
   useGrid,
-  p = list(),
+  data = list(),
   units = list(),
   classes = as.character(),
   vp = list(x = 0, y = 0),
   xscale = 0:1,
   yscale = 0:1
 )
+}
+\arguments{
+\item{art}{accepts only a single art object}
 }
 \value{
 

@@ -7,7 +7,7 @@
 defaultArtSettings()
 }
 \value{
-Returns a list including artClasses, artp, and artstyle.
+Returns a list including artClasses, artdata, and artstyle.
 }
 \description{
 Returns a list of default settings and parameters for easyPlot.

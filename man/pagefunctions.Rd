@@ -3,15 +3,14 @@
 \name{pagefunctions}
 \alias{pagefunctions}
 \alias{runPageFunctions}
-\title{pagefunctionsfunctions}
+\title{pagefunctions}
 \usage{
 runPageFunctions(
   input,
   classes = list(),
   getData = FALSE,
-  runTimes = 0,
   frameNumber,
-  plotting = FALSE
+  abcd = "a"
 )
 }
 \description{

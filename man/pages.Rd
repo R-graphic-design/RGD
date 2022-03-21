@@ -3,15 +3,15 @@
 \docType{class}
 \name{pages}
 \alias{pages}
-\alias{scene}
+\alias{page.new}
 \title{pages}
 \usage{
-scene(...)
+page.new(...)
 }
 \arguments{
 \item{sections, ...}{These parameters are merged into the sections slot.}
 
-\item{deviceSettings, }{name, style, p, units, frames, framesToPlot parameters for the constructor new("page") go directly into the relevant slots}
+\item{deviceSettings, }{name, style, data, units, frames, framesToPlot parameters for the constructor new("page") go directly into the relevant slots}
 }
 \description{
 An S4 class to collect sections. It can represent a page in a pdf.;
@@ -30,7 +30,7 @@ The default page...
 
 \item{\code{style}}{A list of parameters inherited by all sections, layers and components in the page}
 
-\item{\code{p}}{A list of parameters inherited by all sections, layers and components in the page}
+\item{\code{data}}{A list of parameters inherited by all sections, layers and components in the page}
 
 \item{\code{units}}{A list of units inherited by all sections, layers and components in the page}
 

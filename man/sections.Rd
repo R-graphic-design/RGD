@@ -21,14 +21,17 @@
   angle = 1,
   layers = list(),
   sections = list(),
-  p = list(),
+  data = list(),
   style = list(),
   units = list(),
   borderCol = NULL,
   fillCol = NULL,
   borderLWD = 0.05,
   tableBox = NULL,
-  functions = list(),
+  action = list(),
+  build = list(),
+  camera = list(),
+  display = list(),
   frames = integerSet(),
   tags = as.character()
 )
@@ -63,7 +66,7 @@ The default layer made by the constructor completely empty, with no parameters, 
 
 \item{\code{clip}}{if grid is used, this controls clipping.}
 
-\item{\code{p}}{a list of parameters inherited by components, layers and sections in this section}
+\item{\code{data}}{a list of parameters inherited by components, layers and sections in this section}
 
 \item{\code{style}}{a list of parameters inherited by components, layers and sections in this section}
 
@@ -77,7 +80,9 @@ The default layer made by the constructor completely empty, with no parameters, 
 
 \item{\code{units}}{a list of units inherited by components, layers and sections in this section}
 
-\item{\code{functions}}{a list of section functions that can apply to the section, the list of parameters p or layers, components and sections contained in the section.}
+\item{\code{action,build,display}}{a list of section functions that can apply to the section, the list of parameters in data or layers, components and sections contained in the section.}
+
+\item{\code{camera}}{a list of functions that apply to layers and components in the section.}
 
 \item{\code{tags}}{USED??? REMOVE??}
 

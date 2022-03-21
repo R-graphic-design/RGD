@@ -4,6 +4,7 @@
 \name{sectionfunctions}
 \alias{sectionfunctions}
 \alias{initialize,sectionfunction-method}
+\alias{sectionfunction}
 \alias{runSectionFunction}
 \alias{runSectionFunctions}
 \title{sectionfunctions}
@@ -15,14 +16,16 @@
   frames = integerSet()
 )
 
+sectionfunction(...)
+
 runSectionFunction(input, inputFun, frameNumber)
 
 runSectionFunctions(
   input,
   classes = list(),
   getData = FALSE,
-  frameNumber = 1,
-  plotting = FALSE
+  frameNumber,
+  abcd = "a"
 )
 }
 \description{
