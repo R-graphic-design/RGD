@@ -112,7 +112,7 @@ runComponentFunctions=function(input,classes=list(),getData=FALSE,frameNumber=0,
 	}
 	if(abcd=="b"&&length(input@build)>0){
 		for(i in 1:length(input@build)){
-			if(class(input@build[[i]])=="componentfunction"&&integerCheck(frameNumber,input@build[[i]]@frames))||(class(input@build[[i]])=="character")){
+			if((class(input@build[[i]])=="componentfunction"&&integerCheck(frameNumber,input@build[[i]]@frames))||(class(input@build[[i]])=="character")){
 				inputFuns=c(inputFuns,input@build[[i]])
 			}
 		}
