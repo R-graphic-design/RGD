@@ -14,7 +14,7 @@ makeImage(
   ...
 )
 
-makeImageFromMatrix(...)
+makeImageFromMatrix(.useData = c(FALSE, TRUE), ...)
 }
 \arguments{
 \item{type}{plotting function(s) used}

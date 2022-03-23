@@ -19,7 +19,7 @@ runCCA(
 
 randomInitialCCA(maxNum = 7, xSize = 100, ySize = 100)
 
-makeCCA(input = NULL, .plotting = c(FALSE, TRUE), ...)
+makeCCA(input = NULL, .abcd = c("a", "d"), ...)
 }
 \arguments{
 \item{input}{a matrix}
@@ -36,9 +36,9 @@ makeCCA(input = NULL, .plotting = c(FALSE, TRUE), ...)
 
 \item{xSize, ySize}{size of a randomly generated starting grid}
 
-\item{.plotting}{logical vector of length two. Used for timing the functions runCCA and matrixToColours.}
-
 \item{...}{parameters passed to the component and the component functions. See "details" for more information.}
+
+\item{.plotting}{logical vector of length two. Used for timing the functions runCCA and matrixToColours.}
 }
 \value{
 makeCCA returns a component. runCCA returns a list containing the image. randomInitialCCA returns a matrix.
