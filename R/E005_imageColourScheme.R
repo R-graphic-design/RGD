@@ -10,20 +10,20 @@
 #' imageColourScheme(component())@data
 
 imageColourScheme=function(input){
-	if(is.null(input@p$matrixToColours_col)){
+	if(is.null(input@data$matrixToColours_col)){
 		colourSchemePar=list()
 		for(i in names(as.list(args("colourScheme")))){
-			if(i %in% names(input@p)){
-				colourSchemePar[i]=input@p[i]
+			if(i %in% names(input@data)){
+				colourSchemePar[i]=input@data[i]
 			}
 		}
 		if(!("numberOfColours"%in%names(colourSchemePar))){
-			colourSchemePar$numberOfColours=length(unique(as.vector(input@p$image)))
+			colourSchemePar$numberOfColours=length(unique(as.vector(input@data$image)))
 		}
 		input@p$matrixToColours_col=do.call("colourScheme",colourSchemePar)
 	}
-	if(class(input@p$matrixToColours_col)!="list"){
-		input@p$matrixToColours_col=as.list(input@p$matrixToColours_col)
+	if(class(input@data$matrixToColours_col)!="list"){
+		input@p$matrixToColours_col=as.list(input@data$matrixToColours_col)
 	}
 return(input)
 }
