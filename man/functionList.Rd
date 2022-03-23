@@ -23,7 +23,7 @@
   type = ""
 )
 
-functionList(functions = c(), ...)
+functionList(fun = c(), ...)
 
 \S4method{+}{component,functionList}(e1, e2)
 

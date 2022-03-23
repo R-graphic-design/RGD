@@ -15,7 +15,7 @@ NULL
 #' @rdname ChaosGame
 #' @export
 makeChaosGame=function(type="points",...){
-	return(component(type=type,...)+action.data("runChaosGame",...))
+	return(component(type=type,...)+action.data(fun="runChaosGame",...))
 }
 
 #' @rdname ChaosGame

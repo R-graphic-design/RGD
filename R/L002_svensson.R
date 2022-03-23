@@ -21,7 +21,7 @@ NULL
 #' @rdname SvenssonAttractor
 #' @export
 makeSvenssonAttractor=function(type="points",...){
-	return(component(type=type,...)+action.data("runSvenssonAttractor",...))
+	return(component(type=type,...)+action.data(fun="runSvenssonAttractor",...))
 }
 
 #' @rdname SvenssonAttractor

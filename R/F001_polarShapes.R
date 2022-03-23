@@ -42,7 +42,7 @@ runPolarShape=function(x=0,y=0,r=c(0.2,0.1),points=5,loops=1,rotation=0,polarFun
 #' @rdname PolarShapes
 #' @export
 makePolarShape=function(type="polygon",...){
-	return(component(type=type,...)+action.data("runPolarShape",...))
+	return(component(type=type,...)+action.data(fun="runPolarShape",...))
 }
 
 #' @rdname PolarShapes

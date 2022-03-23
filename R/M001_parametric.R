@@ -28,8 +28,8 @@ makeTSpace=function(tmin=0,tmax=1,lent=101){
 #' @export
 makeParametric=function(type="lines",...){
 	if("parameterSpace"%in%names(list(...))){
-		return(component(type=type,...)+action.data("runParametric",...))
+		return(component(type=type,...)+action.data(fun="runParametric",...))
 	}else{
-		return(component(type=type,...)+action.data(c("makeTSpace","runParametric"),...))
+		return(component(type=type,...)+action.data(fun=list("makeTSpace","runParametric"),...))
 	}
 }

@@ -11,6 +11,6 @@
 #' @examples
 #' print(1+1)
 #' @name quickfunctions
-action.data=function(functions=c(),.abcd="a",.useData=TRUE,...){
-	return(functionList(functions=c(),.abcd=.abcd,.useData=.useData,...))
+action.data=function(fun=c(),.abcd="a",.useData=TRUE,...){
+	return(functionList(fun=fun,.abcd=.abcd,.useData=.useData,...))
 }

@@ -43,11 +43,11 @@ randomInitialCCA=function(maxNum=7,xSize=100,ySize=100){
 }
 #' @rdname cyclicCellularAutomata
 #' @export
-makeCCA=function(input=NULL,.plotting=c(FALSE,TRUE),...){
+makeCCA=function(input=NULL,.abcd=c("a","d"),...){
 	if(is.null(input)){
-		answer=makeImage(...)+p2p_cf(c("randomInitialCCA","runCCA","matrixToColours"),.plotting=c(FALSE,.plotting),...)
+		answer=makeImage(...)+functionList(fun=list("randomInitialCCA","runCCA","matrixToColours"),.abcd=c("a",.abcd),...)
 	}else{
-		answer=makeImage(input=input,...)+p2p_cf(c("runCCA","matrixToColours"),.plotting=.plotting,...)
+		answer=makeImage(input=input,...)+functionList(fun=list("runCCA","matrixToColours"),.abcd=.abcd,...)
 	}
 	return(answer)
 }

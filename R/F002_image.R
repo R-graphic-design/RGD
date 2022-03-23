@@ -18,6 +18,6 @@ makeImage=function(type="rasterImage",xleft=0,xright=1,ytop=1,ybottom=0,...){
 }
 #' @rdname makeImage
 #' @export
-makeImageFromMatrix=function(...){
-	return(makeImage(...)+action.data("imageColourScheme",...)+action.comp("matrixToColours",...))
+makeImageFromMatrix=function(.useData=c(FALSE,TRUE),...){
+	return(makeImage(...)+functionList(fun=c("imageColourScheme","matrixToColours"),...))
 }

@@ -5,7 +5,7 @@
 \alias{action.data}
 \title{quickfunctions}
 \usage{
-action.data(functions = c(), .abcd = "a", .useData = TRUE, ...)
+action.data(fun = c(), .abcd = "a", .useData = TRUE, ...)
 }
 \arguments{
 \item{...}{extra items to be added to the functionList slot}

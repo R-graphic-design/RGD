@@ -12,7 +12,7 @@
 #' @examples
 #' print(1+1)
 #' @name functionList
-setClass("functionList",slots=c(functionList="ANY",frames="integerSet",abcd="character",repeats="numeric",useData="logical",type="character"))
+setClass("functionList",slots=c(functionList="ANY",frames="ANY",abcd="character",repeats="numeric",useData="logical",type="character"))
 
 #' @rdname functionList
 #' @method initialise functionList
@@ -24,11 +24,12 @@ setMethod("initialize","functionList",function(.Object,...,functionList=as.chara
 	.Object@repeats=repeats
 	.Object@useData=useData
 	.Object@type=type
+	.Object
 })
 
 #' @rdname functionList
 #' @export
-functionList=function(functions=c(),...){
+functionList=function(fun=c(),...){
 	#STEP 1 -> GET PASSED VALUES
 	.frames=list(...)$.frames
 	.abcd=list(...)$.abcd
@@ -51,10 +52,11 @@ functionList=function(functions=c(),...){
 		.frames=list(.frames)
 	}
 	if(is.null(.abcd)){.abcd="a"}
+	if(is.null(.type)){.type=""}
 	if(is.null(.useData)){.useData=TRUE}
-	if(class(functions)=="character"){functions=as.list(functions)}
+	if(class(fun)=="character"){fun=as.list(fun)}
 	#RETURN THE ANSWER	
-	return(new("functionList",functionList=functions,frames=.frames,abcd=.abcd,repeats=.repeats,useData=.useData,type=.type))
+	return(new("functionList",functionList=fun,frames=.frames,abcd=.abcd,repeats=.repeats,useData=.useData,type=.type))
 }
 #' @rdname functionList
 #' @export
@@ -67,13 +69,13 @@ setMethod("+",c("component","functionList"),function(e1,e2){
 									repeats=loopSubset(e2@repeats,i),
 									returnComponents=!loopSubset(e2@useData,i),
 									frames=loopSubset(e2@frames,i))
-		if(is.null(e2@type)||loopSubset(e2@type,i)=="a"){
+		if(loopSubset(e2@abcd,i)=="a"){
 			actionsToAdd=c(actionsToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="b"){
+		if(loopSubset(e2@abcd,i)=="b"){
 			buildToAdd=c(buildToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="d"){
+		if(loopSubset(e2@abcd,i)=="d"){
 			displayToAdd=c(displayToAdd,newFun)
 		}
 	}
@@ -93,13 +95,13 @@ setMethod("-",c("component","functionList"),function(e1,e2){
 									repeats=loopSubset(e2@repeats,i),
 									returnComponents=!loopSubset(e2@useData,i),
 									frames=loopSubset(e2@frames,i))
-		if(is.null(e2@type)||loopSubset(e2@type,i)=="a"){
+		if(loopSubset(e2@abcd,i)=="a"){
 			actionsToAdd=c(actionsToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="b"){
+		if(loopSubset(e2@abcd,i)=="b"){
 			buildToAdd=c(buildToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="d"){
+		if(loopSubset(e2@abcd,i)=="d"){
 			displayToAdd=c(displayToAdd,newFun)
 		}
 	}
@@ -117,7 +119,7 @@ setMethod("+",c("layer","functionList"),function(e1,e2){
 	displayToAdd=list()
 	newFun=""
 	for(i in 1:length(e2@functionList)){
-		if(!is.null(e2@type)&&e2@type=="component"){
+		if(e2@type=="component"){
 			newFun=componentfunction(fun=e2@functionList[[i]],
 										repeats=loopSubset(e2@repeats,i),
 										returnComponents=!loopSubset(e2@useData,i),
@@ -128,13 +130,13 @@ setMethod("+",c("layer","functionList"),function(e1,e2){
 									frames=loopSubset(e2@frames,i))
 			
 		}
-		if(is.null(e2@type)||loopSubset(e2@type,i)=="a"){
+		if(loopSubset(e2@abcd,i)=="a"){
 			actionsToAdd=c(actionsToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="b"){
+		if(loopSubset(e2@abcd,i)=="b"){
 			buildToAdd=c(buildToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="d"){
+		if(loopSubset(e2@abcd,i)=="d"){
 			displayToAdd=c(displayToAdd,newFun)
 		}
 	}
@@ -152,7 +154,7 @@ setMethod("-",c("layer","functionList"),function(e1,e2){
 	displayToAdd=list()
 	newFun=""
 	for(i in 1:length(e2@functionList)){
-		if(!is.null(e2@type)&&e2@type=="component"){
+		if(e2@type=="component"){
 			newFun=componentfunction(fun=e2@functionList[[i]],
 										repeats=loopSubset(e2@repeats,i),
 										returnComponents=!loopSubset(e2@useData,i),
@@ -163,13 +165,13 @@ setMethod("-",c("layer","functionList"),function(e1,e2){
 									frames=loopSubset(e2@frames,i))
 			
 		}
-		if(is.null(e2@type)||loopSubset(e2@type,i)=="a"){
+		if(loopSubset(e2@abcd,i)=="a"){
 			actionsToAdd=c(actionsToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="b"){
+		if(loopSubset(e2@abcd,i)=="b"){
 			buildToAdd=c(buildToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="d"){
+		if(loopSubset(e2@abcd,i)=="d"){
 			displayToAdd=c(displayToAdd,newFun)
 		}
 	}
@@ -189,32 +191,32 @@ setMethod("+",c("section","functionList"),function(e1,e2){
 	displayToAdd=list()
 	newFun=""
 	for(i in 1:length(e2@functionList)){
-		if(!is.null(e2@type)&&e2@type=="component"){
+		if(e2@type=="component"){
 			newFun=componentfunction(fun=e2@functionList[[i]],
 										repeats=loopSubset(e2@repeats,i),
 										returnComponents=!loopSubset(e2@useData,i),
 										frames=loopSubset(e2@frames,i))
 			}
-		if(!is.null(e2@type)&&e2@type=="layer"){
+		if(e2@type=="layer"){
 			newFun=layerfunction(fun=e2@functionList[[i]],
 									returnLayer=!loopSubset(e2@useData,i),
 									frames=loopSubset(e2@frames,i))			
 		}
-		if(is.null(e2@type)||e2@type=="section"){
+		if(e2@type%in%c("","section")){
 			newFun=sectionfunction(fun=e2@functionList[[i]],		
 									returnSection=!loopSubset(e2@useData,i),
 									frames=loopSubset(e2@frames,i))
 		}
-		if(is.null(e2@type)||loopSubset(e2@type,i)=="a"){
+		if(loopSubset(e2@abcd,i)=="a"){
 			actionsToAdd=c(actionsToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="b"){
+		if(loopSubset(e2@abcd,i)=="b"){
 			buildToAdd=c(buildToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="c"){
+		if(loopSubset(e2@abcd,i)=="c"){
 			cameraToAdd=c(cameraToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="d"){
+		if(loopSubset(e2@abcd,i)=="d"){
 			displayToAdd=c(displayToAdd,newFun)
 		}
 	}
@@ -236,32 +238,32 @@ setMethod("-",c("section","functionList"),function(e1,e2){
 	displayToAdd=list()
 	newFun=""
 	for(i in 1:length(e2@functionList)){
-		if(!is.null(e2@type)&&e2@type=="component"){
+		if(e2@type=="component"){
 			newFun=componentfunction(fun=e2@functionList[[i]],
 										repeats=loopSubset(e2@repeats,i),
 										returnComponents=!loopSubset(e2@useData,i),
 										frames=loopSubset(e2@frames,i))
 			}
-		if(!is.null(e2@type)&&e2@type=="layer"){
+		if(e2@type=="layer"){
 			newFun=layerfunction(fun=e2@functionList[[i]],
 									returnLayer=!loopSubset(e2@useData,i),
 									frames=loopSubset(e2@frames,i))			
 		}
-		if(is.null(e2@type)||e2@type=="section"){
+		if(e2@type%in%c("","section")){
 			newFun=sectionfunction(fun=e2@functionList[[i]],		
 									returnSection=!loopSubset(e2@useData,i),
 									frames=loopSubset(e2@frames,i))
 		}
-		if(is.null(e2@type)||loopSubset(e2@type,i)=="a"){
+		if(loopSubset(e2@abcd,i)=="a"){
 			actionsToAdd=c(actionsToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="b"){
+		if(loopSubset(e2@abcd,i)=="b"){
 			buildToAdd=c(buildToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="c"){
+		if(loopSubset(e2@abcd,i)=="c"){
 			cameraToAdd=c(cameraToAdd,newFun)
 		}
-		if(!is.null(e2@type)&&loopSubset(e2@type,i)=="d"){
+		if(loopSubset(e2@abcd,i)=="d"){
 			displayToAdd=c(displayToAdd,newFun)
 		}
 	}

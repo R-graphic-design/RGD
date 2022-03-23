@@ -17,9 +17,15 @@ NULL
 #' @rdname subsetHelpers
 #' @export
 loopSubset=function(x,i){
-return(x[loopIndex(i,length(x))])
+	if(class(x)=="list"){
+		return(x[[loopIndex(i,length(x))]])
+	}else{
+		return(x[loopIndex(i,length(x))])
+	}
 }
 
+
+#UPDATE THIS TOO DO LISTS LIKE LOOP SUBSET?? WHERE IS THIS USED?? WHY X not X[i]??
 #' @rdname subsetHelpers
 #' @export
 overflowSubset=function(x,i){
