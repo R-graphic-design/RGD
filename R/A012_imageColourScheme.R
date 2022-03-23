@@ -7,7 +7,7 @@
 #' @return Returns the input after setting input@p$matrixToColours_col 
 #' @export
 #' @examples
-#' imageColourScheme(component())@p
+#' imageColourScheme(component())@data
 
 imageColourScheme=function(input){
 	if(is.null(input@p$matrixToColours_col)){
