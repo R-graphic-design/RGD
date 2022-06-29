@@ -16,8 +16,16 @@ NULL
 makeImage=function(type="rasterImage",xleft=0,xright=1,ytop=1,ybottom=0,...){
 	return(component(type=type,xleft=xleft,xright=xright,ytop=ytop,ybottom=ybottom,...))
 }
+
 #' @rdname makeImage
 #' @export
-makeImageFromMatrix=function(.useData=c(FALSE,TRUE),...){
-	return(makeImage(...)+functionList(fun=c("imageColourScheme","matrixToColours"),...))
+makeImageFromMatrix=function(...){
+	return(makeImage(...)+action.data("matrixToColours",...))
 }
+
+#' @rdname makeImage
+#' @export
+makeImageFromMatrix2=function(.useData=c(FALSE,TRUE),...){
+	return(makeImage(...)+functionList(fun=c("imageColourScheme","matrixToColours"),.useData=.useData,...))
+}
+

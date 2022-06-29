@@ -3,6 +3,7 @@
 \name{makeImage}
 \alias{makeImage}
 \alias{makeImageFromMatrix}
+\alias{makeImageFromMatrix2}
 \title{makeImage}
 \usage{
 makeImage(
@@ -14,7 +15,9 @@ makeImage(
   ...
 )
 
-makeImageFromMatrix(.useData = c(FALSE, TRUE), ...)
+makeImageFromMatrix(...)
+
+makeImageFromMatrix2(.useData = c(FALSE, TRUE), ...)
 }
 \arguments{
 \item{type}{plotting function(s) used}

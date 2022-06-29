@@ -3,9 +3,30 @@
 \name{quickfunctions}
 \alias{quickfunctions}
 \alias{action.data}
+\alias{build.data}
+\alias{camera.data}
+\alias{display.data}
+\alias{action.object}
+\alias{build.object}
+\alias{camera.object}
+\alias{display.object}
 \title{quickfunctions}
 \usage{
 action.data(fun = c(), .abcd = "a", .useData = TRUE, ...)
+
+build.data(fun = c(), .abcd = "b", .useData = TRUE, ...)
+
+camera.data(fun = c(), .abcd = "c", .useData = TRUE, ...)
+
+display.data(fun = c(), .abcd = "d", .useData = TRUE, ...)
+
+action.object(fun = c(), .abcd = "a", .useData = FALSE, ...)
+
+build.object(fun = c(), .abcd = "b", .useData = FALSE, ...)
+
+camera.object(fun = c(), .abcd = "c", .useData = FALSE, ...)
+
+display.object(fun = c(), .abcd = "d", .useData = FALSE, ...)
 }
 \arguments{
 \item{...}{extra items to be added to the functionList slot}

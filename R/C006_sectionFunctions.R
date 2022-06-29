@@ -29,6 +29,8 @@ sectionfunction=function(...){new("sectionfunction",...)}
 #' @export
 runSectionFunction=function(input,inputFun,frameNumber){
 	#print("running runSectionFunction")
+	
+	#WHY DOES THIS NOT USE CLASSES LIKE runLayerFunction????
 	if(inputFun@returnSection){
 		if("frameNumber"%in%names(as.list(args(inputFun@fun)))){
 			return(do.call(inputFun@fun,c(list(input),frameNumber=frameNumber)))
@@ -36,35 +38,4 @@ runSectionFunction=function(input,inputFun,frameNumber){
 			return(do.call(inputFun@fun,list(input)))		
 		}
 	}
-}
-
-
-#' @rdname sectionfunctions
-#' @export
-runSectionFunctions=function(input,classes=list(),getData=FALSE,frameNumber,abcd="a"){
-	if(getData){input=getRequiredDataSection(input)}
-	answer=input
-	listFuns=list()
-	if(abcd=="a"){listFuns=input@action}
-	if(abcd=="b"){listFuns=input@build}
-	if(abcd=="c"){listFuns=input@camera}
-	if(abcd=="d"){listFuns=input@display}
-	if(!"numeric"%in%sapply(FUN=class,listFuns)){listFuns=c(listFuns,0)}
-	for(i in 1:length(listFuns)){
-		if(class(listFuns[[i]])=="numeric"){
-			if(length(answer@sections)>0){
-				for(j in 1:length(answer@sections)){
-					answer@sections[[j]]=runSectionFunctions(answer@sections[[j]],frameNumber=frameNumber,abcd=abcd)
-				}
-			}
-			if(length(answer@layers)>0){
-				for(j in 1:length(answer@layers)){
-					answer@layers[[j]]=runLayerFunctions(answer@layers[[j]],frameNumber=frameNumber,abcd=abcd)
-				}
-			}
-		}else if(class(listFuns[[i]])%in%c("sectionfunction")&&integerCheck(frameNumber,listFuns[[i]]@frames)){
-			answer=runSectionFunction(answer,listFuns[[i]],frameNumber=frameNumber)
-		}
-	}
-	return(answer)
 }

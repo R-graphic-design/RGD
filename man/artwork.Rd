@@ -99,7 +99,7 @@ The possible values of mode are:
 
 \item{\code{psdata}}{NOT USED ANYWHERE WHAT IS THIS DELETE IT?????????}
 
-\item{\code{framerate}}{A number used for animations (mode 3)}
+\item{\code{framerate}}{A pair of numbers used for animations (mode 3)}
 }}
 
 \examples{

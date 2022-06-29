@@ -6,7 +6,6 @@
 \alias{initialize,layerfunction-method}
 \alias{layerfunction}
 \alias{runLayerFunction}
-\alias{runLayerFunctions}
 \title{layerfunctions}
 \usage{
 \S4method{initialize}{layerfunction}(
@@ -19,14 +18,6 @@
 layerfunction(...)
 
 runLayerFunction(input, inputFun, classes, frameNumber)
-
-runLayerFunctions(
-  input,
-  classes = list(),
-  getData = FALSE,
-  frameNumber,
-  abcd = "a"
-)
 }
 \description{
 An S4 class for functions that operate on layers or their parameters

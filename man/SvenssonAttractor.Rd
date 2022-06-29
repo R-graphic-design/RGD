@@ -46,6 +46,7 @@ easyPlot(art,preserveAspectRatio=TRUE)
 \url{http://paulbourke.net/fractals/peterdejong/}
 
 Other 2dAttractors: 
+\code{\link{CliffordAttractor}},
 \code{\link{DeJongAttractor}}
 }
 \concept{2dAttractors}

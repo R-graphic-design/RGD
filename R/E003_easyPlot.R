@@ -31,7 +31,7 @@
 easyPlot=function(art,border=0.1,useGrid=FALSE,format="screen",width=NULL,height=NULL,
 	name=NULL,folder=NULL,frameFolder=NULL,xlim=NULL,ylim=NULL,widthUnit="in",heightUnit="in",
 	deviceSettings=list(res=150,antialias="cleartype"),bg=NA,borderLine="black",preserveAspectRatio=FALSE,.aspectRatio=1,
-	plotArt=TRUE,mode=NULL,frames=1,framesToPlot=NULL,framerate=10,innerMargin=0.04,...){
+	plotArt=TRUE,mode=NULL,frames=1,framesToPlot=NULL,framerate=c(10,30),innerMargin=0.04,...){
 	plotFromLayer=FALSE
 	if(class(art)=="component"){art=layer(art)}
 	if(class(art)=="list"&&class(art[[1]])=="component"){art=layer(components=art)}

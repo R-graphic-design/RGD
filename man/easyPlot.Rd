@@ -27,7 +27,7 @@ easyPlot(
   mode = NULL,
   frames = 1,
   framesToPlot = NULL,
-  framerate = 10,
+  framerate = c(10, 30),
   innerMargin = 0.04,
   ...
 )

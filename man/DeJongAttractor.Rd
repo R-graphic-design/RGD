@@ -53,6 +53,7 @@ art=makeDeJongAttractor(cex=0.1,col=rgb(0,0,0,0.1))
 \url{http://paulbourke.net/fractals/peterdejong/}
 
 Other 2dAttractors: 
+\code{\link{CliffordAttractor}},
 \code{\link{SvenssonAttractor}}
 }
 \concept{2dAttractors}

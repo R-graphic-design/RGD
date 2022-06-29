@@ -24,4 +24,9 @@ Converts polar co-ordinates into cartesian co-ordinates.
 \examples{
 polar2cart(0,0,1,c(0,pi/2,pi,3*pi/2))
 }
+\seealso{
+Other polarConversion: 
+\code{\link{cart2polar}()},
+\code{\link{makePolar}()}
+}
 \concept{polarConversion}

@@ -4,17 +4,17 @@
 \alias{RColorBrewerMaxColours}
 \title{RColorBrewerMaxColours}
 \usage{
-RColorBrewerMaxColours(style = "RdPu")
+RColorBrewerMaxColours(scheme = "RdPu")
 }
 \arguments{
-\item{style}{The style in question}
+\item{scheme}{The scheme in question}
 }
 \value{
-The maximum number of colours for a given style in RColorBrewer
+The maximum number of colours for a given scheme in RColorBrewer
 }
 \description{
-Returns the maximum number of colours for a given style in RColorBrewer
+Returns the maximum number of colours for a given scheme in RColorBrewer
 }
 \examples{
-RColorBrewerMaxColours=function(style="RdPu")
+RColorBrewerMaxColours=function(scheme="RdPu")
 }

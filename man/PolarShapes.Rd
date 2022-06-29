@@ -17,7 +17,8 @@ runPolarShape(
   rotation = 0,
   polarFunction = NULL,
   polarArguments = list(),
-  repeats = 1
+  repeats = 1,
+  useSegments = FALSE
 )
 
 makePolarShape(type = "polygon", ...)

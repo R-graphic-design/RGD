@@ -4,17 +4,17 @@
 \alias{wesandersonMaxColours}
 \title{wesandersonMaxColours}
 \usage{
-wesandersonMaxColours(style = "GrandBudapest1")
+wesandersonMaxColours(scheme = "GrandBudapest1")
 }
 \arguments{
-\item{style}{The style in question}
+\item{scheme}{The scheme in question}
 }
 \value{
-The maximum number of colours for a given style in wes anderson
+The maximum number of colours for a given scheme in wes anderson
 }
 \description{
-Returns the maximum number of colours for a given style in the wes anderson package
+Returns the maximum number of colours for a given scheme in the wes anderson package
 }
 \examples{
-wesandersonMaxColours=function(style="GrandBudapest1")
+wesandersonMaxColours=function(scheme="GrandBudapest1")
 }

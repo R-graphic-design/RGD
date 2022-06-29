@@ -126,7 +126,7 @@ plotArtwork=function(art){
 				}
 				#STEP 3 runningFunctions
 				print(paste("step 3",i,j))
-				art@pages[[i]]=runPageFunctions(art@pages[[i]],frameNumber=currentFrame,abcd="a")
+				art@pages[[i]]=runAllFunctions(art@pages[[i]],frameNumber=currentFrame,abcd="a")
 				if(art@mode==-1){
 					calculatedXLims=xScaleSection(art@pages[[1]]@sections[[1]],calculatedXLims[1],calculatedXLims[2])
 					calculatedYLims=yScaleSection(art@pages[[1]]@sections[[1]],calculatedYLims[1],calculatedYLims[2])
@@ -135,9 +135,9 @@ plotArtwork=function(art){
 				print(paste("step 4",i,j))
 				checkLastFrameToPlot=(currentFrame==art@pages[[i]]@framesToPlot[length(art@pages[[i]]@framesToPlot)])
 				if(checkFrameToPlot){
-					temp=runPageFunctions(art@pages[[i]],frameNumber=currentFrame,abcd="b")
-					temp=runPageFunctions(temp,frameNumber=currentFrame,abcd="c")
-					temp=runPageFunctions(temp,frameNumber=currentFrame,abcd="d")
+					temp=runAllFunctions(art@pages[[i]],frameNumber=currentFrame,abcd="b")
+					temp=runAllFunctions(temp,frameNumber=currentFrame,abcd="c")
+					temp=runAllFunctions(temp,frameNumber=currentFrame,abcd="d")
 					if(art@mode==-1){
 						calculatedXLims=xScaleSection(art@pages[[1]]@sections[[1]],calculatedXLims[1],calculatedXLims[2])
 						calculatedYLims=yScaleSection(art@pages[[1]]@sections[[1]],calculatedYLims[1],calculatedYLims[2])
@@ -165,9 +165,11 @@ plotArtwork=function(art){
 		}#end loop pages
 		#STEP 5 animate if necessary
 		if(art@mode==3){
-			animateCommand=paste("ffmpeg -y -r ",2," -start_number 1 -i ",
+			framerate=art@framerate
+			if(length(framerate)==1){framerate=c(framerate,framerate)}
+			animateCommand=paste("ffmpeg -y -r ",framerate[1]," -start_number 1 -i ",
 						art@frameFolder,"\\",art@name,"_%05d.",art@format,
-						" -c:v libx264 -r ",30," -pix_fmt yuv420p ",
+						" -c:v libx264 -r ",framerate[2]," -pix_fmt yuv420p ",
 						art@folder,"\\",art@name,".mp4",sep="")
 			system(animateCommand)
 		}
@@ -183,9 +185,9 @@ plotArtwork=function(art){
 plotPageAllFrames=function(input,data=list(),units=list(),classes=c(),vp=list(),useGrid=FALSE){
 	for(i in input@frames){
 		#print(paste("frame=",i))
-		input=runPageFunctions(input,frameNumber=i)
+		input=runAllFunctions(input,frameNumber=i)
 		if(i%in%input@framesToPlot){
-			temp=runPageFunctions(input,frameNumber=i,plotting=TRUE)
+			temp=runAllFunctions(input,frameNumber=i,plotting=TRUE)
 			plotPageSingleFrame(temp,data=data,units=units,classes=classes,vp=vp,useGrid=FALSE,frameNumber=i)
 		}
 	}

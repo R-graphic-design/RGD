@@ -6,7 +6,7 @@
 \usage{
 matrixToColours(
   image,
-  col = list("white", "black", "red", "blue", "orange", "yellow", "green", "purple",
+  col = c("white", "black", "red", "blue", "orange", "yellow", "green", "purple",
     "brown", "gray"),
   breaks = NULL
 )
@@ -14,7 +14,7 @@ matrixToColours(
 \arguments{
 \item{image}{a matrix}
 
-\item{col}{a list of colours}
+\item{col}{a list of colours or vector that can be coerced into a list using as.list. Each colour should be an rgb vector or character. Lists can contain a mixture of both formats.}
 
 \item{breaks}{optional. For ranges that correspond to colours}
 }

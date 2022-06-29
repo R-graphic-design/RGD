@@ -6,7 +6,6 @@
 \alias{initialize,componentfunction-method}
 \alias{componentfunction}
 \alias{runComponentFunction}
-\alias{runComponentFunctions}
 \title{componentfunctions}
 \usage{
 \S4method{initialize}{componentfunction}(
@@ -20,14 +19,6 @@
 componentfunction(...)
 
 runComponentFunction(input, inputFun, frameNumber)
-
-runComponentFunctions(
-  input,
-  classes = list(),
-  getData = FALSE,
-  frameNumber = 0,
-  abcd = "a"
-)
 }
 \description{
 An S4 class for functions that operate on components or their parameters

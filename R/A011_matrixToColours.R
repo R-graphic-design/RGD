@@ -2,17 +2,18 @@
 #'
 #' Takes a matrix converts into rgb colours. e.g. 1=red, 2=blue, etc or ranges for each colour
 #' @param image a matrix
-#' @param col a list of colours
+#' @param col a list of colours or vector that can be coerced into a list using as.list. Each colour should be an rgb vector or character. Lists can contain a mixture of both formats.
 #' @param breaks optional. For ranges that correspond to colours
 #' @return Returns an RGB array
 #' @export
 #' @examples
 #' matrixToColours(matrix(1:9,3))
 
-matrixToColours=function(image,col=list("white","black","red","blue","orange","yellow","green","purple","brown","gray"),breaks=NULL){
+matrixToColours=function(image,col=c("white","black","red","blue","orange","yellow","green","purple","brown","gray"),breaks=NULL){
  colR=c()
  colG=c()
  colB=c()
+ col=as.list(col)
  for(i in 1:length(col)){
 	 if(is.character(col[[i]])){col[[i]]=col2rgb(col[[i]])}
 	 colR[i]=col[[i]][1]

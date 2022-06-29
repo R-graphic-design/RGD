@@ -6,20 +6,21 @@
 \usage{
 colourScheme(
   numberOfColours = 10,
-  style = "BW",
+  scheme = "BW",
   colours = NULL,
   bias = 1,
   space = c("rgb", "Lab"),
   alpha = FALSE,
   interpolate = c("linear", "spline"),
   reverse = FALSE,
-  discrete = TRUE
+  discrete = TRUE,
+  randomise = FALSE
 )
 }
 \arguments{
 \item{numberOfColours}{The number of colours returned. Defaults to 10.}
 
-\item{style}{The palette or function to use. Used when colours is NULL. Defaults to "BW" for black and white. See details for more information.}
+\item{scheme}{The palette or function to use. Used when colours is NULL. Defaults to "BW" for black and white. See details for more information.}
 
 \item{colours}{A starting set of colours that will be interpolated.}
 
@@ -34,6 +35,8 @@ colourScheme(
 \item{reverse}{Reverses the final colour order. Defaults to FALSE}
 
 \item{discrete}{Defaults to TRUE}
+
+\item{randomise}{logical. If TRUE randomises the order of the answer. Defaults to FALSE}
 }
 \value{
 Returns a vector of colours of the given length.
@@ -42,7 +45,7 @@ Returns a vector of colours of the given length.
 Creates a single function that can create colour schemes using many different packages with the option of interpolation.
 }
 \details{
-The possible values of style are;
+The possible values of scheme are;
 \itemize{
 \item "BW" and "BWrev" for greyscale
 \item "rainbow" and "rainbowrev" which uses rainbow()

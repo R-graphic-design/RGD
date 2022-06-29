@@ -23,19 +23,25 @@ NULL
 
 #' @rdname PolarShapes
 #' @export
-runPolarShape=function(x=0,y=0,r=c(0.2,0.1),points=5,loops=1,rotation=0,polarFunction=NULL,polarArguments=list(),repeats=1){
+runPolarShape=function(x=0,y=0,r=c(0.2,0.1),points=5,loops=1,rotation=0,polarFunction=NULL,polarArguments=list(),repeats=1,useSegments=FALSE){
+	answer=list()
 	if(is.null(polarFunction)){
 		bearing=seq(0,2*pi,len=((length(r)*points)/loops)+1)+rotation
 		bearing=rep(bearing[-length(bearing)],times=loops)
 		bearing=bearing[loopSubset(!is.na(r),seq_along(bearing))]
 		r=r[!is.na(r)]
-		return(polar2cart(x=x,y=y,dist=rep(r,times=points),bearing=bearing))
+		answer=polar2cart(x=x,y=y,dist=rep(r,times=points),bearing=bearing)
 	}else{
 		bearing=seq(0,2*pi,len=(repeats*points/loops)+1)+rotation
 		bearing=rep(bearing[-length(bearing)],times=loops)
 		polarBearings=rep(seq(0,2*pi,len=length(bearing)/repeats),times=repeats)
 		dist=do.call(polarFunction,c(list(polarBearings),polarArguments))
-		return(polar2cart(x=x,y=y,dist=dist,bearing=bearing))
+		answer=polar2cart(x=x,y=y,dist=dist,bearing=bearing)
+	}
+	if(useSegments){
+		return(list(x0=answer$x,x1=c(answer$x[-1],answer$x[1]),y0=answer$y,y1=c(answer$y[-1],answer$y[1])))
+	}else{
+		return(answer)
 	}
 }
 

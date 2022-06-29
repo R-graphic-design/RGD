@@ -6,7 +6,6 @@
 \alias{initialize,sectionfunction-method}
 \alias{sectionfunction}
 \alias{runSectionFunction}
-\alias{runSectionFunctions}
 \title{sectionfunctions}
 \usage{
 \S4method{initialize}{sectionfunction}(
@@ -19,14 +18,6 @@
 sectionfunction(...)
 
 runSectionFunction(input, inputFun, frameNumber)
-
-runSectionFunctions(
-  input,
-  classes = list(),
-  getData = FALSE,
-  frameNumber,
-  abcd = "a"
-)
 }
 \description{
 An S4 class for functions that operate on sections or their parameters

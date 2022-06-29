@@ -20,7 +20,7 @@
 #' @slot units A list of units inherited by all pages, sections, layers and components in the artwork
 #' @slot classes A list that connects component types to plotting functions.
 #' @slot psdata NOT USED ANYWHERE WHAT IS THIS DELETE IT?????????
-#' @slot framerate A number used for animations (mode 3)
+#' @slot framerate A pair of numbers used for animations (mode 3)
 #' @param pages,... These parameters are merged into the pages slot.
 #' @param name,format,deviceSettings,width,height,mode,folder,frameFolder,useGrid,useShowText,viewports,fonts,style,p,units,classes,psdata,framerate parameters for the constructor new("artwork") go directly into the relevant slots
 #' @details
