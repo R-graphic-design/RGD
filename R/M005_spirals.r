@@ -4,7 +4,7 @@
 #' @param numLines the number of lines spiralling out from the center
 #' @param x,y co-ordinates for the centre of the spiral
 #' @param maxRadius the size of the spiral
-#' @param numPoints the number of points. [CHECK per line or per spiral??]
+#' @param numPoints the number of points. (CHECK per line or per spiral??)
 #' @param numTurns the number of times a line goes around the centre of the spiral.
 #' @param clockwise logical. Sets the direction or rotation. Defaults to FALSE / anti-clockwise.
 #' @param ... parameters passed to makePolar

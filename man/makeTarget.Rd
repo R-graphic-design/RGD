@@ -32,5 +32,5 @@ Returns a layer with one component per circle.
 Creates a layer containing a series of concentric circles.
 }
 \examples{
-easyPlot(makeTarget(x=0,y=0,1,3)
+easyPlot(makeTarget(x=0,y=0,1,3))
 }
