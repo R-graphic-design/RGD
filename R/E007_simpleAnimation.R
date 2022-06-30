@@ -38,9 +38,9 @@ parameterAdjust=function(input){
 
 #' @rdname simpleAnimation
 #' @export
-addSimpleAnimation=function(input,parametersAdd,parametersMultiply,...){
-	input@data$parametersAdd=parametersAdd
-	input@data$parametersMultiply=parametersMultiply
+addSimpleAnimation=function(input,parametersAdd=NULL,parametersMultiply=NULL,...){
+	if(!is.null(parametersAdd)){input@data$parametersAdd=parametersAdd}
+	if(!is.null(parametersAdd)){input@data$parametersMultiply=parametersMultiply}
 	input=input+action.object("parameterAdjust",...)
 	return(input)
 }

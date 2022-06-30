@@ -8,7 +8,7 @@
 \usage{
 parameterAdjust(input)
 
-addSimpleAnimation(input, parametersAdd, parametersMultiply, ...)
+addSimpleAnimation(input, parametersAdd = NULL, parametersMultiply = NULL, ...)
 }
 \arguments{
 \item{input}{a component}
