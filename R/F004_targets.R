@@ -9,7 +9,7 @@
 #' @return Returns a layer with one component per circle.
 #' @export
 #' @examples
-#' easyPlot(makeTarget(x=0,y=0,1,3)
+#' easyPlot(makeTarget(x=0,y=0,1,3))
 
 
 
