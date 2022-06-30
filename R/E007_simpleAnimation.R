@@ -12,7 +12,7 @@
 #' @seealso
 #' @examples
 #' art=new("component",x=0,y=0)
-#' art=addParameterAdjustmentAnimation(art,list(x=0.01))
+#' art=addSimpleAnimation(art,list(x=0.01))
 #' easyPlot(art,frames=1:100,framesToPlot=1:100,mode=0)
 #' @name simpleAnimation
 NULL

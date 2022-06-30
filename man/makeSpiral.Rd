@@ -22,7 +22,7 @@ makeSpiral(
 
 \item{maxRadius}{the size of the spiral}
 
-\item{numPoints}{the number of points. \link{CHECK per line or per spiral??}}
+\item{numPoints}{the number of points. (CHECK per line or per spiral??)}
 
 \item{numTurns}{the number of times a line goes around the centre of the spiral.}
 
