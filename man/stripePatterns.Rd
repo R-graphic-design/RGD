@@ -58,6 +58,9 @@ return a single component
 \description{
 Functions to create striped patterns
 }
+\details{
+Three functions that make striped patterns.
+}
 \examples{
 print(1+1)
 }

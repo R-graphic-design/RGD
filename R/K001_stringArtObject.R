@@ -8,7 +8,6 @@
 #' @slot distances a list of adjacencies for each line group
 #' @slot lineGroups a list of point groups to join with lines
 #' @slot loop logical. If true the ends of a group are considered adjacent to the start of the group.
-#' @details
 #' @family stringArt
 #' @export
 #' @examples

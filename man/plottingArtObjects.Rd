@@ -3,7 +3,6 @@
 \name{plottingArtObjects}
 \alias{plottingArtObjects}
 \alias{plotArtwork}
-\alias{plotPageAllFrames}
 \alias{plotPageSingleFrame}
 \alias{plotSection}
 \alias{plotLayer}
@@ -11,15 +10,6 @@
 \title{plottingArtObjects}
 \usage{
 plotArtwork(art)
-
-plotPageAllFrames(
-  input,
-  data = list(),
-  units = list(),
-  classes = c(),
-  vp = list(),
-  useGrid = FALSE
-)
 
 plotPageSingleFrame(input, data, units, classes, vp, useGrid, frameNumber)
 
@@ -64,6 +54,12 @@ plotComponent(
 }
 \description{
 Functions to plot objects from this package.
+}
+\details{
+plotArtwork, plotPage, plotSection, plotLayer and plotComponent are used for each art object.
+Only plotArtwork is intended for end users.
+plotArtwork's only input is an artwork object.
+The others accept more parameters that come from the parent object.
 }
 \examples{
 print(1+1)

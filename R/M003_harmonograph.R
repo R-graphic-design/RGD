@@ -2,12 +2,15 @@
 #' @description
 #' Functions to calculate a harmonograph
 #' runHarmonograph calculates the points. makeHarmonograph makes a component that calculates and plots the output.
-#' @param frequencies
-#' @param phases
-#' @param amplitudes
-#' @param decay
+#' @param frequencies pendulum paramater - numerical vector
+#' @param phases pendulum paramater - numerical vector
+#' @param amplitudes pendulum paramater - numerical vector
+#' @param decay pendulum paramater - numerical vector
 #' @param ... parameters passed to makeParametric.
+#' @details
+#' The four inputs (frequencies, phases, amplitudes and decay) should all be vectors of the same length.
 #' @examples
+#' easyPlot(makeHarmonograph())
 #' @export
 #' @family makeParametric
 #' easyPlot(makeHarmonograph())

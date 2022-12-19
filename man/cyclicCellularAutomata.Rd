@@ -26,6 +26,8 @@ makeCCA(input = NULL, .abcd = c("a", "d"), ...)
 
 \item{image}{a matrix}
 
+\item{numSteps}{The number of iterations of the automata.}
+
 \item{maxNum}{The number of values a cell can have}
 
 \item{nbhdType}{The type of neighbourhood}
@@ -35,6 +37,8 @@ makeCCA(input = NULL, .abcd = c("a", "d"), ...)
 \item{threshold}{the requirement to advance a cell}
 
 \item{xSize, ySize}{size of a randomly generated starting grid}
+
+\item{.abcd}{controls which functions are action, build, camera or display. Default is ("a","d").}
 
 \item{...}{parameters passed to the component and the component functions. See "details" for more information.}
 

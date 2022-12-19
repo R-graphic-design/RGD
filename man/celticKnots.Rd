@@ -35,6 +35,28 @@ makeCelticCurve(
 )
 }
 \arguments{
+\item{layer}{A layer object that represents the celtic knot. Components will be sections of the ribbons.}
+
+\item{lineOrder}{??}
+
+\item{angles}{??}
+
+\item{basis}{data.frame containing information about the anchor points of the knot.}
+
+\item{knotOrder}{??}
+
+\item{knotFillColour}{The colour of the knot}
+
+\item{knotBorderColour}{The colour of the knot line border}
+
+\item{clockWiseCorners}{??}
+
+\item{flipCorners}{??}
+
+\item{distance}{gives the distance of line(s) from the middle of the ribbon. This controls the width of the ribbons.}
+
+\item{knotMode}{controls the style of a knot. Options are "DEFAULT", "INNERRIBBON" and "DOUBLE". Default is one ribbon, innerribbon is one ribbon inside another, double is two parallel ribbons.}
+
 \item{...}{parameters passed to the layer and the layer function object. See "details" for more information.}
 }
 \value{
@@ -42,6 +64,9 @@ a celtic knot
 }
 \description{
 Functions to draw Celtic knots.
+}
+\details{
+A series of functions to draw celtic knots.
 }
 \examples{
 print(1+1)

@@ -29,6 +29,8 @@ nicePlot(
 \item{finalWidth, finalHeight}{sizes given in inches.}
 
 \item{name, folder, bg, format, border, useGrid, res, innerMargin, borderColours, borderSize, ...}{all passed to easyPlot}
+
+\item{bgCode}{a shortcut for border colours. small number. see instagramColours}
 }
 \value{
 No return value, easy plot is called.

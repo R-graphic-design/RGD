@@ -13,10 +13,13 @@ makePatternBlock(...)
 \item{...}{parameters passed to the component and the function runPatternBlock. See details.}
 }
 \value{
-makePatternBlock creates a component whilst runPatternBlock takes in a component anc returns a list of components.
+makePatternBlock creates a component whilst runPatternBlock takes in a component and returns a list of components.
 }
 \description{
 Functions to create a block of the same pattern repeated over and over.
+}
+\details{
+makePatternBlock creates an entire block of patterns.
 }
 \examples{
 print(1+1)

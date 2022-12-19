@@ -6,6 +6,7 @@
 #' @param names,x,y,groups,lineGroups,distances,addPoints=FALSE,loop parameters used to create a stringArtObject
 #' @param ... parameters passed to the component. See "details" for more information.
 #' @details
+#' For drawing string art.
 #' @family stringArt
 #' @return runStringArt returns a list with x0,x1,y0,y1 co-ordinates. makeStringArt returns a component object.
 #' @seealso

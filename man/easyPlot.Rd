@@ -29,6 +29,7 @@ easyPlot(
   framesToPlot = NULL,
   framerate = c(10, 30),
   innerMargin = 0.04,
+  startingFrame = 1,
   ...
 )
 }
@@ -74,6 +75,8 @@ easyPlot(
 \item{framerate}{numeric.}
 
 \item{innerMargin}{numeric. see addBorder}
+
+\item{startingFrame}{numeric. For plotting modes 2,3 and 4. Determines where the file name numbering sequence starts. Useful for adding new frames onto the end of previously produced output.}
 
 \item{...}{parameters passed to the final artwork using art=art+artdata(...)}
 }

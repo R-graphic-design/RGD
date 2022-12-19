@@ -7,6 +7,7 @@
 #' @param foreground,background colours for the foreground and background.
 #' @param ... parameters passed to the component.
 #' @details
+#' Two functions that make square patterns.
 #' @return return a single component
 #' @family patterns
 #' @seealso

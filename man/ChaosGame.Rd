@@ -18,7 +18,8 @@ runChaosGame(
   runTime = 1000,
   sampleSize = NULL,
   reuseInput = FALSE,
-  decisionMode = 1
+  decisionMode = 1,
+  optionsSet = NULL
 )
 }
 \arguments{

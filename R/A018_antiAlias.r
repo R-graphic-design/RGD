@@ -3,8 +3,9 @@
 #' @description
 #' A simple anti alias function
 #' @param image an array with three colour channels
-#' @return Returns an array that is half the size of the original
+#' @return Returns an array that is a quarter the size of the original
 #' @details 
+#' Takes an array and splits each channel into non-overlapping 2x2 cells and returns a smaller array with the average of the old 2x2 cells in the new cells. 
 #' @export
 #' @examples
 #' print(1+1)

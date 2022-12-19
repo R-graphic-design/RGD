@@ -30,7 +30,8 @@
   fonts = "",
   classes = c(artBorder = "rect"),
   psdata = list(),
-  framerate = 10
+  framerate = 10,
+  startingFrame = 1
 )
 
 \S4method{+}{artwork,list}(e1, e2)
@@ -45,7 +46,7 @@ artwork(...)
 \item{pages, ...}{These parameters are merged into the pages slot.}
 }
 \description{
-An S4 class to represent an entire graphic, artwork or animation;
+An S4 class to represent an entire graphic, artwork or animation.
 }
 \details{
 The default artwork is a single frame image, displayed on screen with no margins, and no content.
@@ -58,6 +59,8 @@ The possible values of mode are:
 \item mode=1 On devices with multiple pages, seperate frames are on seperate pages.
 \item mode=2 Seperate frames are saved in seperate files
 \item mode=3 As mode 2, and ffmpeg is used to create a video afterwards.
+\item mode=4 No plotting takes place, only the ffmpeg command from mode=3 is run.
+If you do artwork +or- a list, it will +or- each element in the list sequentially.
 }
 }
 \section{Slots}{
@@ -100,6 +103,8 @@ The possible values of mode are:
 \item{\code{psdata}}{NOT USED ANYWHERE WHAT IS THIS DELETE IT?????????}
 
 \item{\code{framerate}}{A pair of numbers used for animations (mode 3)}
+
+\item{\code{startingFrame}}{A number. Used to add frames to an existing collection of frames for modes 2, 3 and 4.}
 }}
 
 \examples{

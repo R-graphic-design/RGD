@@ -58,6 +58,9 @@ return a single component
 \description{
 Functions to create triangular patterns
 }
+\details{
+Three functions that make triangular patterns.
+}
 \examples{
 print(1+1)
 }

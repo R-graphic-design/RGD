@@ -45,6 +45,9 @@ return a single component
 \description{
 Functions to create square patterns
 }
+\details{
+Two functions that make square patterns.
+}
 \examples{
 print(1+1)
 }

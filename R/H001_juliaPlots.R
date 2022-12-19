@@ -18,7 +18,7 @@ NULL
 
 #' @rdname juliaPlots
 #' @export
-runJuliaPlot=function(size=c(1000,1000),xScale=c(-2,2),yScale=c(-2,2),coefficient=c(0.276,0),maxIter=100,maxBound=4){
+runJuliaPlot=function(size=c(1000,1000),xScale=c(-2,2),yScale=c(-2,2),juliaFunction=NULL,coefficient=complex(real=0.276,imaginary=0),maxIter=100,maxBound=4){
 	xSize=size[1]
 	ySize=size[2]
 	answer=matrix(rep(0,size[1]*size[2]),size[1])
@@ -31,16 +31,16 @@ runJuliaPlot=function(size=c(1000,1000),xScale=c(-2,2),yScale=c(-2,2),coefficien
 	xCoefficient=coefficient[1]
 	yCoefficient=coefficient[2]
 	maxIteration=maxIter
+	if(is.null(juliaFunction)){
+		juliaFunction=paste0("function(z){z^2+",coefficient,"}")
+		juliaFunction=eval(parse(text=juliaFunction))
+	}
 	for(i in 1:xSize){
 		for(j in 1:ySize){
-			xTemp=xScale[i]
-			yTemp=yScale[j]
 			iteration=0
-			while((xTemp^2+yTemp^2)<maxBound & iteration < maxIteration){
-				oldX=xTemp
-				temp=xTemp^2-yTemp^2
-				xTemp=temp+xCoefficient
-				yTemp=2*oldX*yTemp+yCoefficient
+			temp=complex(real=xScale[i],imaginary=yScale[j])
+			while(Mod(temp)<maxBound & iteration < maxIteration){
+				temp=do.call(juliaFunction,list(temp))
 				iteration=iteration+1
 			}
 			if(iteration==maxIteration){

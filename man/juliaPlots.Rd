@@ -10,7 +10,8 @@ runJuliaPlot(
   size = c(1000, 1000),
   xScale = c(-2, 2),
   yScale = c(-2, 2),
-  coefficient = c(0.276, 0),
+  juliaFunction = NULL,
+  coefficient = complex(real = 0.276, imaginary = 0),
   maxIter = 100,
   maxBound = 4
 )

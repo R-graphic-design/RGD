@@ -10,7 +10,7 @@
 #' @param units determines the units for co-ordinates
 #' @param xscale,yscale vector of min and max for native units
 #' @param useGrid logical
-#' @param additions
+#' @param additions a list of parameters to add to the existing parameter list.
 #' @return Returns a named list
 #' @export
 #' @examples

@@ -76,7 +76,7 @@ runComponentFunction=function(input,inputFun,frameNumber){
 				}
 			}
 			inputs=inputs[names(inputs)%in%names(as.list(args( inputFun@fun )))]
-			if("frame"%in%names(as.list(args(inputFun@fun)))){inputs=c(inputs,frameNumber=frameNumber)}
+			if("frameNumber"%in%names(as.list(args(inputFun@fun)))){inputs=c(inputs,frameNumber=frameNumber)}
 			outputs=do.call(  inputFun@fun ,inputs)
 		}
 		

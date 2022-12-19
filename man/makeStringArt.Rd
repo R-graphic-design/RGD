@@ -33,6 +33,9 @@ runStringArt returns a list with x0,x1,y0,y1 co-ordinates. makeStringArt returns
 \description{
 Functions to calculate the co-ordinates of a piece of string art from a string art object and to make a component to represent a string art object.
 }
+\details{
+For drawing string art.
+}
 \examples{
 print(1+1)
 }

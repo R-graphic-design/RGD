@@ -40,6 +40,9 @@ runPolar returns a list with x and y components. makePolar returns a component.
 \description{
 Functions to convert polar co-ordinates into cartesean co-ordinates and to make a component that uses functions that output polar co-ordinates.
 }
+\details{
+Used by many other applications such as Maurer roses, spirals and spirographs.
+}
 \examples{
 print(1+1)
 }

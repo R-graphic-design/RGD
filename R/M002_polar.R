@@ -11,6 +11,7 @@
 #' @param numLines divides the answer into a number of lines seperated by NAs for use with lines().
 #' @param ... parameters passed to the component and the component functions. See "details" for more information.
 #' @details
+#' Used by many other applications such as Maurer roses, spirals and spirographs.
 #' @return runPolar returns a list with x and y components. makePolar returns a component.
 #' @family polarConversion
 #' @seealso

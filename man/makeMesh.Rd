@@ -18,5 +18,8 @@ makeMesh(type = "polygon", ...)
 Functions to produces meshes from a list of vertices
 runMesh performs calculations. makeMesh makes a component or list of components.
 }
+\examples{
+print(1+1)
+}
 \concept{makeMesh
 makeMesh()}

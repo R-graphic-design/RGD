@@ -5,6 +5,7 @@
 #' @param x,y,z co-ordinates for vertices
 #' @param faces list of faces. Each face is numerical vector of indices that specify a sequence of vertices from x,y and z.
 #' @examples
+#' print(1+1)
 #' @family makeMesh
 #' makeMesh()
 #' @name makeMesh 

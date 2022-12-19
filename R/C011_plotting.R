@@ -4,6 +4,10 @@
 #' Functions to plot objects from this package.
 #' @param art accepts only a single art object
 #' @details
+#' plotArtwork, plotPage, plotSection, plotLayer and plotComponent are used for each art object.
+#' Only plotArtwork is intended for end users.
+#' plotArtwork's only input is an artwork object.
+#' The others accept more parameters that come from the parent object.
 #' @return
 #' @examples
 #' print(1+1)
@@ -15,9 +19,9 @@ NULL
 #' @export
 plotArtwork=function(art){
 	if(length(art@pages)>0){
-		framesPlotted=0
+		framesPlotted=art@startingFrame-1
 		fullName=paste(art@folder,art@name,sep="\\")
-		if(art@mode==3){fullName=paste(art@frameFolder,art@name,sep="\\")}
+		if(art@mode>2){fullName=paste(art@frameFolder,art@name,sep="\\")}
 		#STEP 0 for mode=-1
 		calculatedXLims=c()
 		calculatedYLims=c()
@@ -25,146 +29,147 @@ plotArtwork=function(art){
 			calculatedXLims=xScaleSection(art@pages[[1]]@sections[[1]])
 			calculatedYLims=yScaleSection(art@pages[[1]]@sections[[1]])
 		}
-		
-		for(i in 1:length(art@pages)){
-			print(paste("page Number",i))
-			numFrames=length(art@pages[[i]]@frames)			
-			for(j in 1:numFrames){
-				currentFrame=art@pages[[i]]@frames[j]
-				#STEP ONE OPEN A DEVICE IF NEEDED
-				print(paste("step 1",i,j))
-				if((art@mode%in%c(0,1)&&i==1&&j==1)|(art@mode>1)){
-					currentFileName=fullName
-					if(art@mode>1){currentFileName=sprintf(paste(fullName,"_%05d",sep=""),framesPlotted+1)}
-					newDeviceSettings=inheritParameters(art@deviceSettings,art@pages[[i]]@deviceSettings,classes=list(),useGrid=art@useGrid)
-					
-					if(is.null(newDeviceSettings$res)){newDeviceSettings$res=150}
-					if(is.null(newDeviceSettings$antialias)){newDeviceSettings$antialias="cleartype"}
-					if(is.null(newDeviceSettings$units)){newDeviceSettings$units="px"}
-					#if(is.null(newDeviceSettings$fileWidth)){newDeviceSettings$antialias="cleartype"}
-					
-					###ADD FILE SIZE SHENANIGANS HERE
-					
-					
-					if(art@format=="pdf"){
-						if(class(art@fonts)=="character"){
-							pdf(file=paste(currentFileName,".pdf",sep=""),width=art@width,height=art@height,fonts=art@fonts)
-						}else{
-							pdf(file=paste(currentFileName,".pdf",sep=""),width=art@width,height=art@height)				
-						}
-					}
-					if(art@format=="cairoPDF"){
-						if(class(art@fonts)=="character"){
-							Cairo(file=paste(currentFileName,".pdf",sep=""),width=art@width,height=art@height,fonts=art@fonts,units="in",type="pdf",dpi=72)
-						}else{
-							Cairo(file=paste(currentFileName,".pdf",sep=""),width=art@width,height=art@height,units="in",type="pdf",dpi=72)				
-						}
-					}
-					if(art@format=="cairoPNG"){
-						Cairo(file=paste(currentFileName,".png",sep=""),width=art@width,height=art@height,type="png",units="in",dpi=72)
-					}
-					if(art@format=="jpg"){
-						jpeg(file=paste(currentFileName,".jpg",sep=""),width=art@width,height=art@height,
-							res=newDeviceSettings$res,antialias=newDeviceSettings$antialias,units=newDeviceSettings$units)
-					}
-					if(art@format=="bitmap"){
-						bmp(file=paste(currentFileName,".bmp",sep=""),width=art@width,height=art@height,
-							res=newDeviceSettings$res,antialias=newDeviceSettings$antialias,units=newDeviceSettings$units)
-					}
-					if(art@format=="png"){
-						png(file=paste(currentFileName,".png",sep=""),width=art@width,height=art@height,
-							res=newDeviceSettings$res,antialias=newDeviceSettings$antialias,units=newDeviceSettings$units)
-					}
-					if(art@format=="screen"){
-						dev.new(width=art@width,height=art@height)
-					}
-					if(art@useShowText){
-						if(length(art@fonts)>0){
-							for(j in 1:length(art@fonts)){
-								if(class(art@fonts[[j]])=="showtextfont"){
-									getShowTextFont(art@fonts[[j]])
-								}
-							}
-						}
-						showtext_begin()
-					}
-				}
-				#STEP 2 STARTING A PLOT
-				print(paste("step 2",i,j))
-				checkFrameToPlot=currentFrame%in%art@pages[[i]]@framesToPlot
-				checkFirstFrameToPlot=currentFrame==art@pages[[i]]@framesToPlot[1]
-				if((art@mode==0&&i==1&&checkFirstFrameToPlot)|(art@mode==1&&checkFrameToPlot)|(art@mode>1&&checkFrameToPlot)){
-					oldpar=c()
-					if(!art@useGrid){
-						settings=newDeviceSettings
-						style=art@style
-						if(!"xlim"%in%names(settings)){
-							if(!"xaxs"%in%names(style)){style$xaxs="i"}
-							if(style$xaxs=="i"){
-								settings$xlim=c(0,art@width)
+		if(art@mode<4){
+			for(i in 1:length(art@pages)){
+				print(paste("page Number",i))
+				numFrames=length(art@pages[[i]]@frames)			
+				for(j in 1:numFrames){
+					currentFrame=art@pages[[i]]@frames[j]
+					#STEP ONE OPEN A DEVICE IF NEEDED
+					print(paste("step 1",i,j))
+					if((art@mode%in%c(0,1)&&i==1&&j==1)|(art@mode>1)){
+						currentFileName=fullName
+						if(art@mode>1){currentFileName=sprintf(paste(fullName,"_%05d",sep=""),framesPlotted+1)}
+						newDeviceSettings=inheritParameters(art@deviceSettings,art@pages[[i]]@deviceSettings,classes=list(),useGrid=art@useGrid)
+						
+						if(is.null(newDeviceSettings$res)){newDeviceSettings$res=150}
+						if(is.null(newDeviceSettings$antialias)){newDeviceSettings$antialias="cleartype"}
+						if(is.null(newDeviceSettings$units)){newDeviceSettings$units="px"}
+						#if(is.null(newDeviceSettings$fileWidth)){newDeviceSettings$antialias="cleartype"}
+						
+						###ADD FILE SIZE SHENANIGANS HERE
+						
+						
+						if(art@format=="pdf"){
+							if(class(art@fonts)=="character"){
+								pdf(file=paste(currentFileName,".pdf",sep=""),width=art@width,height=art@height,fonts=art@fonts)
 							}else{
-								settings$xlim=c(-art@width*0.04,art@width*1.04)
+								pdf(file=paste(currentFileName,".pdf",sep=""),width=art@width,height=art@height)				
 							}
 						}
-						if(!"ylim"%in%names(settings)){
-								if(!"yaxs"%in%names(style)){style$yaxs="i"}
-								if(style$yaxs=="i"){
-									settings$ylim=c(0,art@height)
-								}else{
-									settings$ylim=c(-art@height*0.04,art@height*1.04)
+						if(art@format=="cairoPDF"){
+							if(class(art@fonts)=="character"){
+								Cairo(file=paste(currentFileName,".pdf",sep=""),width=art@width,height=art@height,fonts=art@fonts,units="in",type="pdf",dpi=72)
+							}else{
+								Cairo(file=paste(currentFileName,".pdf",sep=""),width=art@width,height=art@height,units="in",type="pdf",dpi=72)				
+							}
+						}
+						if(art@format=="cairoPNG"){
+							Cairo(file=paste(currentFileName,".png",sep=""),width=art@width,height=art@height,type="png",units="in",dpi=72)
+						}
+						if(art@format=="jpg"){
+							jpeg(file=paste(currentFileName,".jpg",sep=""),width=art@width,height=art@height,
+								res=newDeviceSettings$res,antialias=newDeviceSettings$antialias,units=newDeviceSettings$units)
+						}
+						if(art@format=="bitmap"){
+							bmp(file=paste(currentFileName,".bmp",sep=""),width=art@width,height=art@height,
+								res=newDeviceSettings$res,antialias=newDeviceSettings$antialias,units=newDeviceSettings$units)
+						}
+						if(art@format=="png"){
+							png(file=paste(currentFileName,".png",sep=""),width=art@width,height=art@height,
+								res=newDeviceSettings$res,antialias=newDeviceSettings$antialias,units=newDeviceSettings$units)
+						}
+						if(art@format=="screen"){
+							dev.new(width=art@width,height=art@height)
+						}
+						if(art@useShowText){
+							if(length(art@fonts)>0){
+								for(j in 1:length(art@fonts)){
+									if(class(art@fonts[[j]])=="showtextfont"){
+										getShowTextFont(art@fonts[[j]])
+									}
 								}
 							}
-						oldpar<-par(calibrateParameters(style,useGrid=FALSE))
-						plot.new()
-						#print(c(xlim=settings$xlim,ylim=settings$ylim))
-						plot.window(xlim=settings$xlim,ylim=settings$ylim)#remove xlim,ylim let user use it? NO NEED xlim,ylim...
-					}else{
-						#plot.new()
-						pushViewport(viewport(gp=calibrateParameters(art@style,useGrid=TRUE)))
+							showtext_begin()
+						}
 					}
-					vpInfo=list(xinches=c(0,dev.size("in")[1]),yinches=c(0,dev.size("in")[2]),xusr=par("usr")[1:2],yusr=par("usr")[3:4],xnpc=0:1,ynpc=0:1)
-				}
-				#STEP 3 runningFunctions
-				print(paste("step 3",i,j))
-				art@pages[[i]]=runAllFunctions(art@pages[[i]],frameNumber=currentFrame,abcd="a")
-				if(art@mode==-1){
-					calculatedXLims=xScaleSection(art@pages[[1]]@sections[[1]],calculatedXLims[1],calculatedXLims[2])
-					calculatedYLims=yScaleSection(art@pages[[1]]@sections[[1]],calculatedYLims[1],calculatedYLims[2])
-				}
-				#STEP 4 plot if necessary
-				print(paste("step 4",i,j))
-				checkLastFrameToPlot=(currentFrame==art@pages[[i]]@framesToPlot[length(art@pages[[i]]@framesToPlot)])
-				if(checkFrameToPlot){
-					temp=runAllFunctions(art@pages[[i]],frameNumber=currentFrame,abcd="b")
-					temp=runAllFunctions(temp,frameNumber=currentFrame,abcd="c")
-					temp=runAllFunctions(temp,frameNumber=currentFrame,abcd="d")
+					#STEP 2 STARTING A PLOT
+					print(paste("step 2",i,j))
+					checkFrameToPlot=currentFrame%in%art@pages[[i]]@framesToPlot
+					checkFirstFrameToPlot=currentFrame==art@pages[[i]]@framesToPlot[1]
+					if((art@mode==0&&i==1&&checkFirstFrameToPlot)|(art@mode==1&&checkFrameToPlot)|(art@mode>1&&checkFrameToPlot)){
+						oldpar=c()
+						if(!art@useGrid){
+							settings=newDeviceSettings
+							style=art@style
+							if(!"xlim"%in%names(settings)){
+								if(!"xaxs"%in%names(style)){style$xaxs="i"}
+								if(style$xaxs=="i"){
+									settings$xlim=c(0,art@width)
+								}else{
+									settings$xlim=c(-art@width*0.04,art@width*1.04)
+								}
+							}
+							if(!"ylim"%in%names(settings)){
+									if(!"yaxs"%in%names(style)){style$yaxs="i"}
+									if(style$yaxs=="i"){
+										settings$ylim=c(0,art@height)
+									}else{
+										settings$ylim=c(-art@height*0.04,art@height*1.04)
+									}
+								}
+							oldpar<-par(calibrateParameters(style,useGrid=FALSE))
+							plot.new()
+							#print(c(xlim=settings$xlim,ylim=settings$ylim))
+							plot.window(xlim=settings$xlim,ylim=settings$ylim)#remove xlim,ylim let user use it? NO NEED xlim,ylim...
+						}else{
+							#plot.new()
+							pushViewport(viewport(gp=calibrateParameters(art@style,useGrid=TRUE)))
+						}
+						vpInfo=list(xinches=c(0,dev.size("in")[1]),yinches=c(0,dev.size("in")[2]),xusr=par("usr")[1:2],yusr=par("usr")[3:4],xnpc=0:1,ynpc=0:1)
+					}
+					#STEP 3 runningFunctions
+					print(paste("step 3",i,j))
+					art@pages[[i]]=runAllFunctions(art@pages[[i]],frameNumber=currentFrame,abcd="a")
 					if(art@mode==-1){
 						calculatedXLims=xScaleSection(art@pages[[1]]@sections[[1]],calculatedXLims[1],calculatedXLims[2])
 						calculatedYLims=yScaleSection(art@pages[[1]]@sections[[1]],calculatedYLims[1],calculatedYLims[2])
 					}
-					if(art@mode>-1){
-						plotPageSingleFrame(temp,data=art@data,units=art@units,classes=art@classes,vp=vpInfo,useGrid=art@useGrid,frameNumber=currentFrame)
+					#STEP 4 plot if necessary
+					print(paste("step 4",i,j))
+					checkLastFrameToPlot=(currentFrame==art@pages[[i]]@framesToPlot[length(art@pages[[i]]@framesToPlot)])
+					if(checkFrameToPlot){
+						temp=runAllFunctions(art@pages[[i]],frameNumber=currentFrame,abcd="b")
+						temp=runAllFunctions(temp,frameNumber=currentFrame,abcd="c")
+						temp=runAllFunctions(temp,frameNumber=currentFrame,abcd="d")
+						if(art@mode==-1){
+							calculatedXLims=xScaleSection(art@pages[[1]]@sections[[1]],calculatedXLims[1],calculatedXLims[2])
+							calculatedYLims=yScaleSection(art@pages[[1]]@sections[[1]],calculatedYLims[1],calculatedYLims[2])
+						}
+						if(art@mode>-1){
+							plotPageSingleFrame(temp,data=art@data,units=art@units,classes=art@classes,vp=vpInfo,useGrid=art@useGrid,frameNumber=currentFrame)
+						}
+						#STEP 4B closing a device if necessary
+						if((art@mode%in%c(0,1)&&i==length(art@pages)&&checkLastFrameToPlot)|(art@mode>1)){
+							if(art@useShowText){
+								showtext_end()
+							}
+							if(!art@useGrid){
+								par(oldpar)
+							}else{
+								popViewport()
+							}
+							if(art@format!="screen"){
+								dev.off()
+							}
+						}
+						framesPlotted=framesPlotted+1
 					}
-					#STEP 4B closing a device if necessary
-					if((art@mode%in%c(0,1)&&i==length(art@pages)&&checkLastFrameToPlot)|(art@mode>1)){
-						if(art@useShowText){
-							showtext_end()
-						}
-						if(!art@useGrid){
-							par(oldpar)
-						}else{
-							popViewport()
-						}
-						if(art@format!="screen"){
-							dev.off()
-						}
-					}
-					framesPlotted=framesPlotted+1
-				}
-			}#end loop frames
-		}#end loop pages
+				}#end loop frames
+			}#end loop pages
+		}#end plotting (skipped when mode=4)
 		#STEP 5 animate if necessary
-		if(art@mode==3){
+		if(art@mode>2){
 			framerate=art@framerate
 			if(length(framerate)==1){framerate=c(framerate,framerate)}
 			animateCommand=paste("ffmpeg -y -r ",framerate[1]," -start_number 1 -i ",
@@ -176,21 +181,6 @@ plotArtwork=function(art){
 	}#endif check numPages>0
 	if(art@mode==-1){return(list(x=calculatedXLims,y=calculatedYLims))}
 	if(art@mode==-2){return(art)}
-}
-
-#' @rdname plottingArtObjects
-#' @export
-#OBSOLETE ????
-#NOT UPDATED
-plotPageAllFrames=function(input,data=list(),units=list(),classes=c(),vp=list(),useGrid=FALSE){
-	for(i in input@frames){
-		#print(paste("frame=",i))
-		input=runAllFunctions(input,frameNumber=i)
-		if(i%in%input@framesToPlot){
-			temp=runAllFunctions(input,frameNumber=i,plotting=TRUE)
-			plotPageSingleFrame(temp,data=data,units=units,classes=classes,vp=vp,useGrid=FALSE,frameNumber=i)
-		}
-	}
 }
 
 #' @rdname plottingArtObjects

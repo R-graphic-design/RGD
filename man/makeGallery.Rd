@@ -19,6 +19,8 @@ makeGallery(
 )
 }
 \arguments{
+\item{nRow}{number of rows in the gallery.}
+
 \item{width, height, x, y}{parameters for the final section}
 
 \item{xscale, yscale}{a scale to use for each child section. If not provided these are calculated. See useGlobalScale.}

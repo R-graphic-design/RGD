@@ -25,6 +25,9 @@ parameterAdjust and addSimpleAnimation both return components
 \description{
 Functions to create simple animations by varying parameters
 }
+\details{
+The simplest way to create an animation is for a parameter to be incremented or multiplied by a constant factor each frame. simpleAnimation adds parameters and a function to an art object to do this.
+}
 \examples{
 art=new("component",x=0,y=0)
 art=addSimpleAnimation(art,list(x=0.01))

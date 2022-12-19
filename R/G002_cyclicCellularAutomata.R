@@ -4,13 +4,14 @@
 #' Functions to calculate cyclic cellular automata
 #' @param input a matrix
 #' @param image a matrix
-#' @param numSteps
+#' @param numSteps The number of iterations of the automata.
 #' @param maxNum The number of values a cell can have
 #' @param nbhdType The type of neighbourhood
 #' @param range the size of the neighbourhood
 #' @param threshold the requirement to advance a cell
 #' @param xSize,ySize size of a randomly generated starting grid
 #' @param .plotting logical vector of length two. Used for timing the functions runCCA and matrixToColours. 
+#' @param .abcd controls which functions are action, build, camera or display. Default is ("a","d").
 #' @param ... parameters passed to the component and the component functions. See "details" for more information.
 #' @return makeCCA returns a component. runCCA returns a list containing the image. randomInitialCCA returns a matrix.
 #' @name cyclicCellularAutomata

@@ -22,6 +22,7 @@
 #' @param frames numeric.
 #' @param framesToPlot numeric.
 #' @param framerate numeric.
+#' @param startingFrame numeric. For plotting modes 2,3 and 4. Determines where the file name numbering sequence starts. Useful for adding new frames onto the end of previously produced output.
 #' @param innerMargin numeric. see addBorder 
 #' @param ... parameters passed to the final artwork using art=art+artdata(...)
 #' @return depends on plotArt and mode and art@mode.
@@ -31,7 +32,7 @@
 easyPlot=function(art,border=0.1,useGrid=FALSE,format="screen",width=NULL,height=NULL,
 	name=NULL,folder=NULL,frameFolder=NULL,xlim=NULL,ylim=NULL,widthUnit="in",heightUnit="in",
 	deviceSettings=list(res=150,antialias="cleartype"),bg=NA,borderLine="black",preserveAspectRatio=FALSE,.aspectRatio=1,
-	plotArt=TRUE,mode=NULL,frames=1,framesToPlot=NULL,framerate=c(10,30),innerMargin=0.04,...){
+	plotArt=TRUE,mode=NULL,frames=1,framesToPlot=NULL,framerate=c(10,30),innerMargin=0.04,startingFrame=1,...){
 	plotFromLayer=FALSE
 	if(class(art)=="component"){art=layer(art)}
 	if(class(art)=="list"&&class(art[[1]])=="component"){art=layer(components=art)}
@@ -57,7 +58,7 @@ easyPlot=function(art,border=0.1,useGrid=FALSE,format="screen",width=NULL,height
 		if(is.null(mode)){
 			mode=0
 		}
-		art=artwork(art,deviceSettings=deviceSettings,mode=mode)
+		art=artwork(art,deviceSettings=deviceSettings,mode=mode,startingFrame=startingFrame)
 	}
 	art=art+artdata(...)
 	art=art-defaultArtSettings()

@@ -2,20 +2,20 @@
 #'
 #' @description
 #' Functions to draw Celtic knots.
-#' @param layer
+#' @param layer A layer object that represents the celtic knot. Components will be sections of the ribbons.
 #' @param ... parameters passed to the layer and the layer function object. See "details" for more information.
-#' @param lineOrder
-#' @param angles
-#' @param basis
-#' @param angles
-#' @param knotOrder
-#' @param knotFillColour
-#' @param knotBorderColour
-#' @param clockWiseCorners
-#' @param flipCorners
-#' @param distance
-#' @param knotMode
+#' @param lineOrder ??
+#' @param basis data.frame containing information about the anchor points of the knot.
+#' @param angles ??
+#' @param knotOrder ??
+#' @param knotFillColour The colour of the knot
+#' @param knotBorderColour The colour of the knot line border
+#' @param clockWiseCorners ?? 
+#' @param flipCorners ??
+#' @param distance gives the distance of line(s) from the middle of the ribbon. This controls the width of the ribbons.
+#' @param knotMode controls the style of a knot. Options are "DEFAULT", "INNERRIBBON" and "DOUBLE". Default is one ribbon, innerribbon is one ribbon inside another, double is two parallel ribbons.
 #' @details
+#' A series of functions to draw celtic knots.
 #' @return a celtic knot
 #' @seealso
 #' @examples

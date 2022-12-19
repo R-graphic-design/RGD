@@ -3,8 +3,8 @@
 #' Performs a bezier interpolation based on four points. Instead of requiring the middle two points, the angle of vectors from the start to point 2 and from the end to point 3 are required.
 #' @param x,y co-ordinates of the start and end points.
 #' @param angles the first angle is the from the start and the second is from the end.
-#' @tseq sequence of parameters for the bezier curve
-#' @tanInf value at which tan of angle is considered large enough to be infinite. I think this avoids dividing by zero? or smoother vertical lines???
+#' @param tseq sequence of parameters for the bezier curve
+#' @param tanInf value at which tan of angle is considered large enough to be infinite. I think this avoids dividing by zero? or smoother vertical lines???
 #' @return Returns a curve of points. See bezier() in the bezier package for more details.
 #' @export
 #' @examples

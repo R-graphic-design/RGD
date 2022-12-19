@@ -4,7 +4,7 @@
 #' @param art a component, list of components....
 #' @param finalWidth,finalHeight sizes given in inches.
 #' @param name,folder,bg,format,border,useGrid,res,innerMargin,borderColours,borderSize,... all passed to easyPlot
-#' @bgCode a shortcut for border colours. small number. see instagramColours
+#' @param bgCode a shortcut for border colours. small number. see instagramColours
 #' @return No return value, easy plot is called.
 #' @export
 

@@ -2,7 +2,7 @@
 #'
 #' Takes a list of components and/or layers and creates a section that contains a grid of sections which each contain one item from the original list.
 #' @param inputList
-#' @param nRow
+#' @param nRow number of rows in the gallery.
 #' @param width,height,x,y parameters for the final section
 #' @param xscale,yscale a scale to use for each child section. If not provided these are calculated. See useGlobalScale.
 #' @param useGlobalScale if FALSE child scaling calculations are independent. If TRUE, scales are adjusted so each child has the same scales, and all components are visible. Ignored if xscale and yscale are provided.

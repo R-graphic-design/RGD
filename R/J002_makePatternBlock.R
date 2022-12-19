@@ -5,7 +5,8 @@
 #' @param input
 #' @param ... parameters passed to the component and the function runPatternBlock. See details.
 #' @details
-#' @return makePatternBlock creates a component whilst runPatternBlock takes in a component anc returns a list of components.
+#' makePatternBlock creates an entire block of patterns.
+#' @return makePatternBlock creates a component whilst runPatternBlock takes in a component and returns a list of components.
 #' @family patterns
 #' @seealso
 #' @examples

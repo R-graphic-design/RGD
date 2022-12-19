@@ -7,6 +7,7 @@
 #' @param foreground,background colours for the foreground and background.
 #' @param ... parameters passed to the component.
 #' @details
+#' Three functions that make striped patterns.
 #' @return return a single component
 #' @family patterns
 #' @seealso

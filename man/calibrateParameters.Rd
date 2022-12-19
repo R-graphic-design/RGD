@@ -36,6 +36,8 @@ calibrateParameters(
 \item{xscale, yscale}{vector of min and max for native units}
 
 \item{useGrid}{logical}
+
+\item{additions}{a list of parameters to add to the existing parameter list.}
 }
 \value{
 Returns a named list

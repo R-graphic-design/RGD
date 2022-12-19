@@ -10,10 +10,13 @@ antiAlias22(image)
 \item{image}{an array with three colour channels}
 }
 \value{
-Returns an array that is half the size of the original
+Returns an array that is a quarter the size of the original
 }
 \description{
 A simple anti alias function
+}
+\details{
+Takes an array and splits each channel into non-overlapping 2x2 cells and returns a smaller array with the average of the old 2x2 cells in the new cells.
 }
 \examples{
 print(1+1)

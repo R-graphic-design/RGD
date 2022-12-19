@@ -9,12 +9,13 @@
 #'
 #' x and y are ignored if all of x0,y0,x1,y1 are provided and the input vectors are (x1-x0,y1-y0). i.e. from (x0,y0) to (x1,y1). x1 and y1 are ignored otherwise.
 #'
-#' if all of x0,y0,x1,y1 are NULL, only x and y are used. If lineSegments is FALSE, the default behaviour applies. If TRUE, the vectors are along the line given by x and y. i.e. from (x[1],y[1]) to (x[2],y[2]), from (x[2],y[2]) to (x[3],y[3]), etc.
+#' if all of x0,y0,x1,y1 are NULL, only x and y are used. If lineSegments is FALSE, the default behaviour applies. If TRUE, the vectors are along the line given by x and y, from the first point to the second and so on.
 #' @return Returns a list with r and bearing co-ordinates.
 #' @export
 #' @family polarConversion
 #' @examples
 #' print(1+1)
+
 #' @name cart2polar
 #' @export
 cart2polar<-function(x=0,y=0,x0=NULL,y0=NULL,x1=NULL,y1=NULL,lineSegments=FALSE,forcePositive=FALSE){

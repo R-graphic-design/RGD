@@ -33,6 +33,9 @@ cascadeFunction(input, inputFunction, classes = list(), frameNumber)
 \description{
 Functions to run all functions for art objects. This includes cascading a function down to objects contained in other objects.
 }
+\details{
+Functions to run functions an art object contains and does the same for all sub-objects. Only functions that match the current frame and value of abcd are run.
+}
 \examples{
 print(1+1)
 }

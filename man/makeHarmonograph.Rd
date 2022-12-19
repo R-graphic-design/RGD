@@ -13,11 +13,25 @@ makeHarmonograph(
 )
 }
 \arguments{
+\item{frequencies}{pendulum paramater - numerical vector}
+
+\item{phases}{pendulum paramater - numerical vector}
+
+\item{amplitudes}{pendulum paramater - numerical vector}
+
+\item{decay}{pendulum paramater - numerical vector}
+
 \item{...}{parameters passed to makeParametric.}
 }
 \description{
 Functions to calculate a harmonograph
 runHarmonograph calculates the points. makeHarmonograph makes a component that calculates and plots the output.
+}
+\details{
+The four inputs (frequencies, phases, amplitudes and decay) should all be vectors of the same length.
+}
+\examples{
+easyPlot(makeHarmonograph())
 }
 \concept{makeParametric
 easyPlot(makeHarmonograph())}

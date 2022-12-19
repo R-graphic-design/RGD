@@ -16,7 +16,8 @@ project(
   z1,
   cameraXYZ = c(0, 0, 0),
   thetaXYZ = c(0, 0, 0),
-  surfaceXYZ = c(0, 0, 0)
+  surfaceXYZ = c(0, 0, 0),
+  prepareBackCull = TRUE
 )
 }
 \arguments{

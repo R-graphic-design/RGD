@@ -10,6 +10,7 @@
 #' @param pattern a pattern to add a line or polygon to.
 #' @param ... parameters passed to component().
 #' @details
+#' blankPattern creates a component with a single square, and the other functions add details.
 #' @return
 #' @family patterns
 #' @seealso

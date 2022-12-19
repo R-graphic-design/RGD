@@ -29,5 +29,7 @@ makeParametric(type = "lines", ...)
 Functions to calculate the sequence of points given by functions x(t),y(t) for a vector of parameters t.
 runParametric calculates the points. makeParametric makes a component that calculates and plots the output. runTSpace creates a set of parameters if one isn't provided.
 }
-\concept{makeParametric
-easyPlot(makeParametric())}
+\examples{
+easyPlot(makeParametric())
+}
+\concept{makeParametric}

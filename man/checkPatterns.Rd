@@ -45,6 +45,9 @@ return a single component
 \description{
 Functions to create chequered patterns
 }
+\details{
+Two functions that make checkered patterns.
+}
 \examples{
 print(1+1)
 }

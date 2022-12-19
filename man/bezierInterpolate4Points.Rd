@@ -10,6 +10,10 @@ bezierInterpolate4Points(x, y, angles, tseq, tanInf = 100)
 \item{x, y}{co-ordinates of the start and end points.}
 
 \item{angles}{the first angle is the from the start and the second is from the end.}
+
+\item{tseq}{sequence of parameters for the bezier curve}
+
+\item{tanInf}{value at which tan of angle is considered large enough to be infinite. I think this avoids dividing by zero? or smoother vertical lines???}
 }
 \value{
 Returns a curve of points. See bezier() in the bezier package for more details.

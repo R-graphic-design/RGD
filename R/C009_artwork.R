@@ -1,7 +1,7 @@
 #' artwork
 #'
 #' @description
-#' An S4 class to represent an entire graphic, artwork or animation;
+#' An S4 class to represent an entire graphic, artwork or animation.
 #' @slot pages A list of pages contained in the layer
 #' @slot name A name for the file if saved to a single file
 #' @slot format Can be "screen", "pdf", "jpg", "bitmap", "cairoPDF", "png" or "cairoPNG". 
@@ -21,6 +21,7 @@
 #' @slot classes A list that connects component types to plotting functions.
 #' @slot psdata NOT USED ANYWHERE WHAT IS THIS DELETE IT?????????
 #' @slot framerate A pair of numbers used for animations (mode 3)
+#' @slot startingFrame A number. Used to add frames to an existing collection of frames for modes 2, 3 and 4.
 #' @param pages,... These parameters are merged into the pages slot.
 #' @param name,format,deviceSettings,width,height,mode,folder,frameFolder,useGrid,useShowText,viewports,fonts,style,p,units,classes,psdata,framerate parameters for the constructor new("artwork") go directly into the relevant slots
 #' @details
@@ -39,7 +40,9 @@
 #' * mode=2 Seperate frames are saved in seperate files
 #'
 #' * mode=3 As mode 2, and ffmpeg is used to create a video afterwards.
-#' @details2 If you do artwork +or- a list, it will +or- each element in the list sequentially. 
+#'
+#' * mode=4 No plotting takes place, only the ffmpeg command from mode=3 is run.
+#' If you do artwork +or- a list, it will +or- each element in the list sequentially. 
 #' @import grid
 #' @export
 #' @examples
@@ -63,7 +66,8 @@ setClass("artwork",slots=c(pages="list",
 				units="list",
 				classes="character",
 				psdata="list",
-				framerate="numeric"))
+				framerate="numeric",
+				startingFrame="numeric"))
 #' @rdname artwork
 #' @method initialise artwork
 #' @export
@@ -86,7 +90,8 @@ setMethod("initialize","artwork",function(.Object,...,
 		fonts="",
 		classes=c(artBorder="rect"),
 		psdata=list(),
-		framerate=10){
+		framerate=10,
+		startingFrame=1){
               .Object@pages <- c(pages,list(...))
 		.Object@useGrid<-useGrid
 		.Object@useShowText<-useShowText
@@ -107,6 +112,7 @@ setMethod("initialize","artwork",function(.Object,...,
 .Object@classes<-classes
 .Object@psdata<-psdata
 .Object@framerate<-framerate
+.Object@startingFrame<-startingFrame
 		 .Object
             }
             

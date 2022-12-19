@@ -19,6 +19,9 @@ saveSeed returns the current seed or NULL if not set. restoreSeed doesn't return
 \description{
 Functions to save and restore seeds for random number generators
 }
+\details{
+If easyPlot is called without minimum and maximum x or y co-ordinates, the functions for the art object are run twice. The first time generates the co-ordinates to be used when plotted for real a second time. To ensure random variables return the same result both times, the seed for random variables is saved before the first run and reset for the second run.
+}
 \examples{
 print(1+1)
 }

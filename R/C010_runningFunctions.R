@@ -8,6 +8,7 @@
 #' @param frameNumber numerical
 #' @param abcd "a","b","c" or "d". Short for action, build, camera and display respectively.
 #' @details
+#' Functions to run functions an art object contains and does the same for all sub-objects. Only functions that match the current frame and value of abcd are run.
 #' @return
 #' @examples
 #' print(1+1)
@@ -113,7 +114,7 @@ cascadeFunction=function(input,inputFunction,classes=list(),frameNumber){
 		if(class(input)=="layer"){
 			if(length(answer@layers)>0){
 				for(i in seq_along(answer@layers)){
-					answer@layers[i]=cascadeFunction(answer@layers[[i]],inputFunction,classes=classes,frameNumber=frameNumber)
+					answer@layers[[i]]=cascadeFunction(answer@layers[[i]],inputFunction,classes=classes,frameNumber=frameNumber)
 				}
 			}
 			if(length(answer@components)>0){
@@ -128,14 +129,19 @@ cascadeFunction=function(input,inputFunction,classes=list(),frameNumber){
 		if(class(input)=="section"){
 			if(length(answer@sections)>0){
 				for(i in seq_along(answer@sections)){
-					answer@sections[i]=cascadeFunction(answer@sections[[i]],inputFunction,classes=classes,frameNumber=frameNumber)
+					answer@sections[[i]]=cascadeFunction(answer@sections[[i]],inputFunction,classes=classes,frameNumber=frameNumber)
 				}
 			}
 			if(class(inputFunction)=="layerfunction" && length(answer@layers)>0){
 				for(i in seq_along(answer@layers)){
-					answer@layers[i]=runLayerFunction(answer@layers[[i]],inputFunction,frameNumber=frameNumber)
+					answer@layers[[i]]=runLayerFunction(answer@layers[[i]],inputFunction,frameNumber=frameNumber)
 				}
 			}
+			if(class(inputFunction)=="componentfunction" && length(answer@layers)>0){
+				for(i in seq_along(answer@layers)){
+					answer@layers[[i]]=cascadeFunction(answer@layers[[i]],inputFunction,classes=classes,frameNumber=frameNumber)
+				}
+			}			
 			return(answer)
 		}
 

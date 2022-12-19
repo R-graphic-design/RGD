@@ -34,6 +34,9 @@ addPolygonToPattern(pattern, x, y, border, colour)
 \description{
 Functions to draw a small square in a pattern step by step.
 }
+\details{
+blankPattern creates a component with a single square, and the other functions add details.
+}
 \examples{
 print(1+1)
 }

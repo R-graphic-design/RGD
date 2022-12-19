@@ -7,6 +7,7 @@
 #' @param parametersMultiply a named list of parameters and scale factors. e.g. list(b=2,d=2) would double the value of b and d in input@data.
 #' @param ... function parameters for parameterAdjust from addSimpleAnimation.
 #' @details
+#' The simplest way to create an animation is for a parameter to be incremented or multiplied by a constant factor each frame. simpleAnimation adds parameters and a function to an art object to do this.
 #' @return parameterAdjust and addSimpleAnimation both return components
 #' @family animation
 #' @seealso
