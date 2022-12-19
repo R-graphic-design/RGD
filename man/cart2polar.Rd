@@ -33,7 +33,7 @@ If none of the below apply (the default), the input vector is (x,y). i.e. from t
 
 x and y are ignored if all of x0,y0,x1,y1 are provided and the input vectors are (x1-x0,y1-y0). i.e. from (x0,y0) to (x1,y1). x1 and y1 are ignored otherwise.
 
-if all of x0,y0,x1,y1 are NULL, only x and y are used. If lineSegments is FALSE, the default behaviour applies. If TRUE, the vectors are along the line given by x and y. i.e. from (x\link{1},y\link{1}) to (x\link{2},y\link{2}), from (x\link{2},y\link{2}) to (x\link{3},y\link{3}), etc.
+if all of x0,y0,x1,y1 are NULL, only x and y are used. If lineSegments is FALSE, the default behaviour applies. If TRUE, the vectors are along the line given by x and y, from the first point to the second and so on.
 }
 \examples{
 print(1+1)
